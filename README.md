@@ -21,4 +21,11 @@ You can play with another player. The players will each place their ships on a 1
 
 
 
-Modes 2: Single player.
+Modes 2: Recruit.
+It's a recruit mode. The player is provided with limited 
+
+
+
+
+Modes 3: Single player.
+You can play with an AI.
