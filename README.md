@@ -12,7 +12,7 @@ This battleship game has 2 modes.
 - **Mode 1:  Two players.**
 This mode played by two players. Players each place their ships on a "N * N" board. The objective of this mode is to sink the opponent’s whole fleet.
 
-Each player's fleet has several types of vessels. Generally, each following type of ship has one. Additionally, setting the numbers of each type of ship within limits is available. (e.g. You can set 3 battleship for each player)
+Each player's fleet has several types of vessels. By default, each following type of ship has one. Additionally, setting the numbers of each type of ship within limits is available. (e.g. You can set 3 battleship for each player)
 
 - 1 Aircraft Carrier, 6 spots   (number range: 0~1)
 - 1 Battleship, 5 spots        (number range: 0~3)
@@ -42,6 +42,6 @@ The player is provided with limited number of attacks to sink the computer’s f
 
 The player just need to consider how to sink the computers fleet, and don’t need to launch the fleet.
 
-In this mode, computer’s fleet is generated randomly. Setting the numbers of computer’s vessels and players attack chances within limits is also available.
+In this mode, computer’s fleet is generated randomly. By default, each type of vessel mentioned above has one. Setting the numbers of computer’s vessels and players attack chances is also available.
 
 When computer’s whole fleets is sunk or the chances of attacks is used up, the game ends.
