@@ -10,6 +10,7 @@ _Tu Yuanyang 3035832476_
 This battleship game has 2 modes.
 
 - **Mode 1:  Two players.**
+
 This mode played by two players. Players each place their ships on a "N * N" board. The objective of this mode is to sink the opponent’s whole fleet.
 
 Each player's fleet has several types of vessels. By default, each following type of ship has one. Additionally, setting the numbers of each type of ship within limits is available. (e.g. You can set 3 battleship for each player)
