@@ -12,11 +12,11 @@ This battleship game has 2 modes.
 -Modes 1:  Two players.
 You can play with another player. The players will each place their ships on a 10x10 board, and then begin to guess.
 
-1 Aircraft Carrier, 5 spots
-1 Battleship, 4 spots
-1 Cruiser, 3 spots
-1 Destroyer, 2 spots
-1 Submarine, 2 spots
+-1 Aircraft Carrier, 5 spots
+-1 Battleship, 4 spots
+-1 Cruiser, 3 spots
+-1 Destroyer, 2 spots
+-1 Submarine, 2 spots
 
 
 
