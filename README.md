@@ -2,7 +2,6 @@
 
 **Group 96:**
 
-_He Jiangchuan 3035771945
-
-Tu Yuanyang 3035832476_
+_He Jiangchuan 3035771945_
+_Tu Yuanyang 3035832476_
 
