@@ -9,7 +9,7 @@ _Tu Yuanyang 3035832476_
 
 This battleship game has 2 modes.
 
-1. Mode 1:  Two players.
+- **Mode 1:  Two players.**
 This mode played by two players. Players each place their ships on a "N * N" board. The objective of this mode is to sink the opponent’s whole fleet.
 
 Each player's fleet has several types of vessels. Generally, each following type of ship has one. Additionally, setting the numbers of each type of ship within limits is available. (e.g. You can set 3 battleship for each player)
@@ -29,14 +29,14 @@ Attack effects will be fed back after each attack. Both sides get the result of 
 When a player’s whole fleets is sunk, the game ends.
 
 
-2. Mode 2: Single player.
+- **Mode 2: Single player.**
 
 In this mode, the rules are the same as mode 1, except player’s opponent is a computer.
 
 There are three levels of computer difficulty. **Normal, Hard, Impossible.**
 
 
-3. Mode 3: Challenge mode.
+- **Mode 3: Challenge mode.**
 
 The player is provided with limited number of attacks to sink the computer’s fleet. 
 
