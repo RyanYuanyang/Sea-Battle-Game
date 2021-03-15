@@ -9,7 +9,7 @@ _Tu Yuanyang 3035832476_
 
 This battleship game has 2 modes.
 
--Modes 1:  Two players.
+- Modes 1:  Two players.
 You can play with another player. The players will each place their ships on a 10x10 board, and then begin to guess.
 
 - 1 Aircraft Carrier, 5 spots
@@ -21,11 +21,11 @@ You can play with another player. The players will each place their ships on a 1
 
 
 
--Modes 2: Recruit.
+- Modes 2: Recruit.
 It's a recruit mode. The player is provided with limited 
 
 
 
 
--Modes 3: Single player.
+- Modes 3: Single player.
 You can play with an AI.
