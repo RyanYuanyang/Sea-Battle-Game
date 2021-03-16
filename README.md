@@ -7,13 +7,23 @@ _He Jiangchuan 3035771945_
 _Tu Yuanyang 3035832476_
 
 
-**This battleship game has 2 modes.**
+**Battleship Game**
+
+Battleship game is a strategy type gussing game. It is typically played on square and ruled grids on which each player's fleet of battleships are marked. The locations of the fleets are concealed from the other player. Players alternate turns calling attacks at the grid which marks the other player's ships, and the objective of the game is to destroy the opposing player's fleet.
+
+According to the encyclopedia:
+>Battleship is known worldwide as a pencil and paper game which dates from World War I. It was published by various companies as a pad-and-pencil game in the 1930s, and was released as a plastic board game by Milton Bradley in 1967. The game has spawned electronic versions, video games, smart device apps and a film.
+
+Before play begins, each player secretly arranges their ships on their primary grid. Each ship occupies a number of consecutive squares on the grid, arranged **either horizontally or vertically**. The number of squares for each ship is determined by the type of the ship. The ships cannot overlap (i.e., only one ship can occupy any given square in the grid). The types and numbers of ships allowed are the same for each player. These may vary depending on the rules.
+
+
+**This game has 3 modes.**
 
 
 - **Mode 1:  Two players**
 
 
-Two players are invloved in this moded. Each player places their ships on a "N * N" board. The objective of this mode is to sink the opponent’s whole fleet.
+Two players are invloved in this moded. Each player places their ships on a "N * N" board.
 
 Each player's fleet has several types of vessels. By default, each following type of ship has one. Additionally, setting the numbers of each type of ship within limits is available. (e.g. Each player can set 3 submarines maximum)
 
