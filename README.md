@@ -9,7 +9,9 @@ _Tu Yuanyang 3035832476_
 
 **This battleship game has 2 modes.**
 
+
 - **Mode 1:  Two players**
+
 
 Two players are invloved in this moded. Each player places their ships on a "N * N" board. The objective of this mode is to sink the opponent’s whole fleet.
 
@@ -50,6 +52,7 @@ In this mode, computer’s fleet is generated randomly. By default, each type of
 When computer’s whole fleets is sunk or the chances of attacks is used up, the game ends.
 
 When game ends, an ranking list would be generated, which records the number of attacks conducted in one play round and ranks them from the least.
+
 
 
 **The following features are planed to be implemented:**
