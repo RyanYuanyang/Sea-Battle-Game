@@ -46,3 +46,16 @@ The player just need to consider how to sink the computers fleet, and don’t ne
 In this mode, computer’s fleet is generated randomly. By default, each type of vessel mentioned above has one. Setting the numbers of computer’s vessels and players attack chances is also available.
 
 When computer’s whole fleets is sunk or the chances of attacks is used up, the game ends.
+
+
+**The following features are planed to be implemented:**
+
+1. Random is used to generate the arrangement of player’s fleet (can also be arranged manually) and the enemy’s fleet.
+
+2. An 2D array that represents the whole game board with nxn dimension would be created, and the dimension should be at least 8 and at most 16.
+
+3. The players are able to set their own size of the game board by inputing its dimension, so dynamic memory management would be used to allocate the array which represents the game board with specific size.
+
+4. A file that stores the current situation of the game board and the round would be created if player input save, the player can then load the saved file to continue gaming. In addition, a file that ranks the best record of player in mode 3 would be generated and then being outputted as a readable text for readers.
+
+5. Codes is in multiple files according to their functions. For example, a file named main.cop is the main body of the program, comp.cpp would be the program of the AI opponent, a file named printboard.cpp would be the program to print the 2D array into a game board, and a header file would also be created to declare different functions
