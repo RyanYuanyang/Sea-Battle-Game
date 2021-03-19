@@ -23,7 +23,7 @@ Before play begins, each player secretly arranges their ships on their primary g
 - **Mode 1:  Two players**
 
 
-Two players are invloved in this moded. Each player places their ships on a "N * N" board.
+Two players are invloved in this moded. Each player places their ships on a "N * N" board.  (6<=N<=10)
 
 Each player's fleet has several types of vessels. By default, each following type of ship has one. Additionally, setting the numbers of each type of ship within limits is available. (e.g. Each player can set 3 submarines maximum)
 
