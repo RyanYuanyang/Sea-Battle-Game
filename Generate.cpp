@@ -13,7 +13,8 @@ int rd() // generate a random number
 {
 	int rr;
 	rr = rand();
-	rr = rr*rr%19260817;
+	rr = rr*rr%19260817;  //to make the random number more diffuse  
+	// mod by a big prime to avoid random numbers concenrate on some values
 	return rr;
 }
 
@@ -25,7 +26,6 @@ int chki(int a[11][11], int len, int B_size, int st1, int st2)//check i lines to
 		for(int j = 0; j<B_size; ++j)
 		{
 			p=0;
-		//	printf("i %d ia %d     j %d    ja %d\n",i,(i+st1)%B_size,j,(j+st2)%B_size);
 			for(int k = 0; k+(i+st1)%B_size<B_size; ++k)
 			{
 				if(!a[ k+(i+st1)%B_size ][ (j+st2)%B_size ]) p++;
