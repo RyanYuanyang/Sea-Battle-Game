@@ -1,7 +1,5 @@
 #include<cstdio>
 #include<iostream>
-#include<cstring>
-#include<string>
 #include<ctime>
 #include<cstdlib>
 using namespace std;
@@ -18,46 +16,44 @@ int rd() // generate a random number
 	return rr;
 }
 
-int chki(int a[11][11], int len, int B_size, int st1, int st2)//check i lines to place ship 
+int CHKi(int a[11][11], int len, int n, int st1, int st2)//check i lines to place ship 
 {
 	//len == length of the ship    B_size  ==  Board Size
 	//(st1,st2) is the starter position to check is there is a place for the ship
 	int p;
-	for(int i = 0; i<B_size; ++i)
-	{
-		for(int j = 0; j<B_size; ++j)
+	for(int i = 0; i<n; ++i)
+		for(int j = 0; j<n; ++j)
 		{
 			p=0;
-			for(int k = 0; k+(i+st1)%B_size<B_size; ++k)
+			for(int k = 0; k + (i+st1)%n < n; ++k)
 			{
-				if(!a[ k+(i+st1)%B_size ][ (j+st2)%B_size ]) p++;
-				if(p == len) return ( (i+st1)%B_size )*100+( (j+st2)%B_size );
-					// There is a place for the ship
-				if(a[ k+(i+st1)%B_size ][ (j+st2)%B_size ]) p = 0;
+				if(!a[ k + (i+st1)%n ][ (j+st2) % n ]) p++;
+				if(p == len)
+					return ( (i+st1) % n )*100+( (j+st2) % n );
+				// There is a place for the ship
+		// [ (i+st1) % n , (j+st2) % n ] represents the starter position of a ship
+				if(a[ k + (i+st1)%n ][ (j+st2) % n ]) p = 0;
 			}
 		}
-	}
 	return -1;// not available
 }
-int chkj(int a[11][11], int len, int B_size, int st1, int st2)//check j lines to place ship 
+int CHKj(int a[11][11], int len, int n, int st1, int st2)//check j lines to place ship 
 {
 	int p;
-	for(int i = 0; i<B_size; ++i)
-	{
-		for(int j = 0; j<B_size; ++j)
+	for(int i = 0; i<n; ++i)
+		for(int j = 0; j<n; ++j)
 		{
 			p=0;
-			for(int k = 0; k+(i+st1)%B_size<B_size; ++k)
+			for(int k = 0; k + (i+st1)%n < n; ++k)
 			{
-				if(!a[ (i+st1)%B_size ][ k+(j+st2)%B_size ]) p++;
-				if(p == len) return ( (i+st1)%B_size )*100+( (j+st2)%B_size );
+				if(!a[ (i+st1) % n ][ k + (j+st2)%n ]) p++;
+				if(p == len)
+					return ( (i+st1) % n )*100+( (j+st2) % n );
 				// There is a for the ship
-				if(a[ (i+st1)%B_size ][ k+(j+st2)%B_size ]) p = 0;
+				if(a[ (i+st1) % n ][ k + (j+st2)%n ]) p = 0;
 			}
-
 		}
-	}
-	return -1;// nott available
+	return -1;// not available
 }
 int PLACE_SHIP(int a[11][11], int n, int len)
 {
@@ -71,8 +67,8 @@ int PLACE_SHIP(int a[11][11], int n, int len)
 	jj = r2 % (n-len);
 	//  ii,jj  is the starter position to check
 	//  r3  is the direction ( r3 = 0 means row  &  r3 = 1 means colum )
-	ci = chki(a,len,n,ii,jj);
-	cj = chkj(a,len,n,ii,jj);
+	ci = CHKi(a,len,n,ii,jj);
+	cj = CHKj(a,len,n,ii,jj);
 	
 	if(ci<0 && cj<0) return 0; // no available place
 
