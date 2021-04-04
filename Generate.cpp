@@ -8,8 +8,8 @@ using namespace std;
 
 int B[11][11]; //board
 int S[10]; //the number of each type of ship
-//0 == nothing    1 == ship   2 == destroyed
-int rd() // rand
+//0 == nothing   2 == Submarine  3 == Destoryer  4 == Cruiser  5 == Battleship  6 == Carrier
+int rd() // generate a random number
 {
 	int rr;
 	rr = rand();
