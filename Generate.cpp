@@ -72,14 +72,14 @@ int PLACE_SHIP(int a[11][11], int n, int len)
 //	printf("ii%d jj%d ci%d cj%d   r3=%d (1->shu  0->heng)\n",ii,jj,ci,cj,r3);
 	if(ci<0 && cj<0) return 0; // no available place
 	// len == ship lenth
-	if(r3) // i向 
+	if(r3) // ship on an i line
 	{
 		if(ci >= 0)
 			for(int k = 0; k<len; ++k)	a[ci/100 + k][ci%100] = len;
 		else if(cj >= 0)
 			for(int k = 0; k<len; ++k)	a[cj/100][cj%100 + k] = len;
 	}
-	else //j向 
+	else // ship on a j line
 	{
 		if(cj >= 0)
 			for(int k = 0; k<len; ++k)	a[cj/100][cj%100 + k] = len;
@@ -103,31 +103,30 @@ int GEN(int a[11][11], int n, int S_num[])//ship number
 		for(int j = 1; j<=S_num[i]; ++j)
 			if(PLACE_SHIP(a,n,i+2) == 0) //i+2 == length of ship
 				printf("FAILED TO PLACE %d\n",i+2);
+					
+	return 0;
+}
 
+void PRINT_BOARD(int a[11][11],int n)
+{
 	printf("    ");
 	for(int j = 0; j<n; ++j)
 		printf("%c ",'A'+j);
 	printf("\n");
+	
 	for(int i = 0; i<n; ++i)
 	{
 		printf("I%d  ",i);
 		for(int j = 0; j<n; ++j)
 		{
-			if(a[i][j])
-				printf("%d ",a[i][j]);
+			if(B[i][j])
+				printf("%d ",B[i][j]);
 			else
 				printf(". ");
 		}
-		
 		printf("\n");
 	}
-
-	
-	
-	
-	return 0;
 }
-
 
 int main()
 {
@@ -139,5 +138,7 @@ int main()
 	
 	GEN(B,10,S);
 		
+	PRINT_BOARD(B,10);
+	
 	return 0;
 }
