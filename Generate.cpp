@@ -32,7 +32,7 @@ int CHKi(int a[11][11], int len, int n, int st1, int st2)//check i lines to plac
 					return ( (i+st1) % n )*100+( (j+st2) % n );
 				// There is a place for the ship
 		// [ (i+st1) % n , (j+st2) % n ] represents the starter position of a ship
-				if(a[ k + (i+st1)%n ][ (j+st2) % n ]) p = 0;
+				if(a[ k + (i+st1)%n ][ (j+st2) % n ]) break;
 			}
 		}
 	return -1;// not available
@@ -50,7 +50,7 @@ int CHKj(int a[11][11], int len, int n, int st1, int st2)//check j lines to plac
 				if(p == len)
 					return ( (i+st1) % n )*100+( (j+st2) % n );
 				// There is a for the ship
-				if(a[ (i+st1) % n ][ k + (j+st2)%n ]) p = 0;
+				if(a[ (i+st1) % n ][ k + (j+st2)%n ]) break;
 			}
 		}
 	return -1;// not available
