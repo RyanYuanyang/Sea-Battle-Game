@@ -4,7 +4,7 @@
 #include<cstdlib>
 using namespace std;
 
-int B[11][11]; //board
+int B[11][11]; //board      first dimension --> row   second --> colum
 int S[10]; //the number of each type of ship
 //0 == nothing   2 == Submarine  3 == Destoryer  4 == Cruiser  5 == Battleship  6 == Carrier
 int rd() // generate a random number
@@ -25,14 +25,15 @@ int CHKi(int a[11][11], int len, int n, int st1, int st2)//check i lines to plac
 		for(int j = 0; j<n; ++j)
 		{
 			p=0;
-			for(int k = 0; k + (i+st1)%n < n; ++k)
+			if( (i+st1)%n +len < n )
+			for(int k = 0; k < len; ++k)
 			{
 				if(!a[ k + (i+st1)%n ][ (j+st2) % n ]) p++;
 				if(p == len)
 					return ( (i+st1) % n )*100+( (j+st2) % n );
 				// There is a place for the ship
 		// [ (i+st1) % n , (j+st2) % n ] represents the starter position of a ship
-				if(a[ k + (i+st1)%n ][ (j+st2) % n ]) break;
+				if(a[ k + (i+st1)%n ][ (j+st2) % n ] > 1) break;
 			}
 		}
 	return -1;// not available
@@ -44,13 +45,14 @@ int CHKj(int a[11][11], int len, int n, int st1, int st2)//check j lines to plac
 		for(int j = 0; j<n; ++j)
 		{
 			p=0;
-			for(int k = 0; k + (i+st1)%n < n; ++k)
+			if( (j+st2)%n +len < n )
+			for(int k = 0; k < len; ++k)
 			{
 				if(!a[ (i+st1) % n ][ k + (j+st2)%n ]) p++;
 				if(p == len)
 					return ( (i+st1) % n )*100+( (j+st2) % n );
 				// There is a for the ship
-				if(a[ (i+st1) % n ][ k + (j+st2)%n ]) break;
+				if(a[ (i+st1) % n ][ k + (j+st2)%n ] > 1) break;
 			}
 		}
 	return -1;// not available
@@ -63,8 +65,8 @@ int PLACE_SHIP(int a[11][11], int n, int len)
 	r2 = rd();
 	r3 = rd()%2;
 	int ii,jj;
-	ii = r1 % (n-len);
-	jj = r2 % (n-len);
+	ii = r1 % n;
+	jj = r2 % n;
 	//  ii,jj  is the starter position to check
 	//  r3  is the direction ( r3 = 0 means row  &  r3 = 1 means colum )
 	ci = CHKi(a,len,n,ii,jj);
