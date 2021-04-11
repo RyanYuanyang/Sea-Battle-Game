@@ -56,10 +56,11 @@ int CHKj(int a[11][11], int len, int n, int st1, int st2)//check j lines to plac
 		}
 	return -1;// not available
 }
-int PLACE_SHIP(int a[11][11], int n, int len)
+int PLACE_SHIP(int a[11][11], int n, int tp)
 {
 	// n*n == Board Size  & len == ship lenth
-	int r1,r2,r3,siz,ci,cj;
+	int r1,r2,r3,siz,ci,cj,ships_num,len;
+	len = tp%10;
 	r1 = rd();
 	r2 = rd();
 	r3 = rd()%2;
@@ -76,16 +77,16 @@ int PLACE_SHIP(int a[11][11], int n, int len)
 	if(r3) // ship on an i line (row)
 	{
 		if(ci >= 0)
-			for(int k = 0; k<len; ++k)	a[ci/100 + k][ci%100] = len;
+			for(int k = 0; k<len; ++k)	a[ci/100 + k][ci%100] = tp;
 		else if(cj >= 0)
-			for(int k = 0; k<len; ++k)	a[cj/100][cj%100 + k] = len;
+			for(int k = 0; k<len; ++k)	a[cj/100][cj%100 + k] = tp;
 	}
 	else // ship on a j line (colum)
 	{
 		if(cj >= 0)
-			for(int k = 0; k<len; ++k)	a[cj/100][cj%100 + k] = len;
+			for(int k = 0; k<len; ++k)	a[cj/100][cj%100 + k] = tp;
 		else if(ci >= 0)
-			for(int k = 0; k<len; ++k)	a[ci/100 + k][ci%100] = len;
+			for(int k = 0; k<len; ++k)	a[ci/100 + k][ci%100] = tp;
 	}
 	return 1; // success
 }
@@ -94,15 +95,9 @@ int GEN(int a[11][11], int n, int S_num[])//ship number
 	//n * n == board size
 	srand( (time(NULL)%19260817) );
 
-	int tot = 0;
-	for(int i = 0; i<5; ++i)
-		for(int j = 1; j<=S_num[i]; ++j) tot+= S_num[i]*j;
-	if( tot > (n*n/2) ) return 1; // too many ships
-	if( tot == 0 ) return 2; // no ships
-
-	for(int i = 0; i<5; ++i)
+	for(int i = 4; i>=0; --i)
 		for(int j = 1; j<=S_num[i]; ++j)
-			if(PLACE_SHIP(a,n,i+2) == 0) //i+2 == length of ship
+			if(PLACE_SHIP(a,n,(i+2) + j*10) == 0) //i+2 == length of ship
 				printf("FAILED TO PLACE %d\n",i+2);
 
 	return 0;
@@ -130,16 +125,15 @@ void PRINT_BOARD(int a[11][11],int n)
 	}
 }
 */
-void genBoard(int B[][11])
+void genBoard(int B[][11],int S[])
 {
 	for(int i = 0; i<10; ++i)
 		for(int j = 0; j<10; ++j) B[i][j] = 0;
 
 	//S[]  array is used to record the number of each type of ship
-	for(int i = 0; i<5; ++i) S[i] = 1;
-
+	//for(int i = 0; i<5; ++i) S[i] = 1;
 	GEN(B,10,S);
-
+	
 //	PRINT_BOARD(B,10);
 
 }
