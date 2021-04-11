@@ -27,11 +27,11 @@ Two players are invloved in this moded. Each player places their ships on a "N *
 
 Each player's fleet has several types of vessels. By default, each following type of ship has one. Additionally, setting the numbers of each type of ship within limits is available. (e.g. Each player can set 3 submarines maximum)
 
-- 1 Aircraft Carrier, 6 spots  (number range: 0~1)
-- 1 Battleship, 5 spots        (number range: 0~1)
-- 1 Cruiser, 4 spots           (number range: 0~2)
-- 1 Destroyer, 3 spots         (number range: 0~2)
-- 1 Submarine, 2 spots         (number range: 0~3)
+- 1 Aircraft Carrier, 6 spots  (number range: 0~3)
+- 1 Battleship, 5 spots        (number range: 0~3)
+- 1 Cruiser, 4 spots           (number range: 0~5)
+- 1 Destroyer, 3 spots         (number range: 0~5)
+- 1 Submarine, 2 spots         (number range: 0~5)
 
 Each player can attack by fire cannon ball to a specified position of the opponent's board. 
 
@@ -48,12 +48,12 @@ When a player’s whole fleets is sunk, the game ends.
 
 In this mode, the rules are the same as mode 1, except player’s opponent is a computer.
 
-There are three levels of computer difficulty. **Normal, Hard, Impossible.**
+There are three levels of computer difficulty. **Easy, Normal, Hard, Impossible.**
 
 
 - **Mode 3: Challenge mode.**
 
-The player is provided with limited number of attacks (50) to sink the computer’s fleet. 
+The player is provided with limited number of attacks (60) to sink the computer’s fleet. 
 
 The player just need to consider how to sink the computers fleet, and don’t need to set their own fleet.
 
