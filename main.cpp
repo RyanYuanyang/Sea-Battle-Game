@@ -32,7 +32,6 @@ int main(){
 	
 	if (opt == '2'){
 		challenge();
-		cout << "    Gameover";
 	}
 	else if (opt == '1'){
 	
