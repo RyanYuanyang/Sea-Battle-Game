@@ -205,4 +205,8 @@ void challenge(){
     }
     shell--;
   }
+  	if(count == tot)
+  		cout<<"    You Have Sanked Enemy Fleet!\n    You Win!\n";
+	else	
+		cout << "    Gameover";
 }
