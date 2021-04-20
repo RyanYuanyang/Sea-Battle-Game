@@ -100,7 +100,11 @@ int Count_ships_left(int board[][11], int ships[])
 					ships_current[ board[i][j]%10 -2 ]++;
 				}
 	for(int i = 0; i<5; ++i)
-		if(ships_current[i] < ships[i]) return (i+2);
+		if(ships_current[i] < ships[i])
+		{
+			ships[i] = ships_current[i];
+			return (i+2);
+		}
 	
 	return 0;
 }
@@ -157,11 +161,11 @@ void challenge(){
   	if(sink_ship)
   	{
   		cout << "    You sank an enemy ";
-  		if(sink_ship == 0) cout << "Submarine !" << endl;
-  		if(sink_ship == 1) cout << "Destoryer !" << endl;
-  		if(sink_ship == 2) cout << "Cruiser !" << endl;
-  		if(sink_ship == 3) cout << "Battleship !" << endl;
-  		if(sink_ship == 4) cout << "Carrier !" << endl;
+  		if(sink_ship == 2) cout << "Submarine !" << endl;
+  		if(sink_ship == 3) cout << "Destoryer !" << endl;
+  		if(sink_ship == 4) cout << "Cruiser !" << endl;
+  		if(sink_ship == 5) cout << "Battleship !" << endl;
+  		if(sink_ship == 6) cout << "Carrier !" << endl;
 	}
   	cout << endl;
     printBoard(board);
