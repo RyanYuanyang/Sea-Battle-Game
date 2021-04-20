@@ -1,7 +1,6 @@
 #include <iostream>
 #include "genBoard.h"
 #include "printBoard.h"
-#include "genBoard.h"
 
 using namespace std;
 
@@ -170,7 +169,7 @@ void challenge(){
   	cout << endl;
     printBoard(board);
     cout << endl;
-    cout << "    Enemy fleet: " << "Submarine(2) = " << ships[0] << " Destoryer(3) = " << ships[1] << " Cruiser(4) = " << ships[2] << " Battleship(5) = " << ships[3] << " Carrier(6) = " << ships[4] << endl << endl;
+    cout << "    Enemy fleet:  Submarine(2) = " << ships[0] << " Destoryer(3) = " << ships[1] << " Cruiser(4) = " << ships[2] << " Battleship(5) = " << ships[3] << " Carrier(6) = " << ships[4] << endl << endl;
     
 	cout << "    " << shell << " shells left,   " << count << " hit." << endl << endl;
     
@@ -178,8 +177,13 @@ void challenge(){
     cin >> x >> y;
 
     while (x > 10 || x < 1 || y > 10 || y < 1 || !cin){
-      cout << "    Denied!" << endl;
-      cout << "    Choose position to attack: x y" << endl;
+		system("cls");
+		cout << "    Denied, Not an Available Position.\n\n\n";
+	    printBoard(board);
+	    cout << endl;
+	    cout << "    Enemy fleet:  Submarine(2) = " << ships[0] << " Destoryer(3) = " << ships[1] << " Cruiser(4) = " << ships[2] << " Battleship(5) = " << ships[3] << " Carrier(6) = " << ships[4] << endl << endl;
+		cout << "    " << shell << " shells left,   " << count << " hit." << endl << endl;
+    	cout << "    Choose position to attack: x y" << endl;
       cin.clear();
       cin.ignore(100, '\n');
       cin >> x >> y;
@@ -195,7 +199,7 @@ void challenge(){
       board[y][x] = -1;
     }
     else if (board[y][x] == 1 || board[y][x] == -1){
-      cout << "    Denied!" << endl << endl;
+      cout << "    Denied, The Position Has been Shot." << endl << endl;
       shell++;
     }
     else{
