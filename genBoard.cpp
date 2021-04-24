@@ -102,7 +102,7 @@ int GEN(int a[11][11], int n, int S_num[])//ship number
 
 	return 0;
 }
-/*
+
 void PRINT_BOARD(int a[11][11],int n)
 {
 	printf("    ");
@@ -124,7 +124,7 @@ void PRINT_BOARD(int a[11][11],int n)
 		printf("\n");
 	}
 }
-*/
+
 void genBoard(int B[][11],int S[])
 {
 	for(int i = 0; i<10; ++i)
@@ -133,7 +133,7 @@ void genBoard(int B[][11],int S[])
 	//S[]  array is used to record the number of each type of ship
 	//for(int i = 0; i<5; ++i) S[i] = 1;
 	GEN(B,10,S);
-	
+
 //	PRINT_BOARD(B,10);
 
 }
