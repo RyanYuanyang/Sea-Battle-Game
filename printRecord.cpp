@@ -1,3 +1,5 @@
+// a program to print player's record in mode 2 on screen
+
 #include <iostream>
 #include <vector>
 #include <iomanip>
