@@ -1,3 +1,5 @@
+// The program to generate randomly the game board with ships
+
 #include<cstdio>
 #include<iostream>
 #include<ctime>
