@@ -1,3 +1,5 @@
+// the program to print the game board to screen.
+
 #include <iostream>
 
 using namespace std;
