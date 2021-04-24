@@ -1,3 +1,5 @@
+// The program which implement mode 2 of the game.
+
 #include <iostream>
 #include <fstream>
 #include <ctime>
@@ -153,7 +155,7 @@ char challenge(){
 	    cout << "    Enemy fleet:  Submarine(2) = " << ships[0] << " Destoryer(3) = " << ships[1] << " Cruiser(4) = " << ships[2] << " Battleship(5) = " << ships[3] << " Carrier(6) = " << ships[4] << endl << endl;
 			cout << "    " << shell << " shells left,   " << count << " hit." << endl << endl;
     	cout << "    Choose position to attack (x y): " << endl;
-			
+
       cin.clear();
       cin.ignore(100, '\n');
       cin >> x >> y;
