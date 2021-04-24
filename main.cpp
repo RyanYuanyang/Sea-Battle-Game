@@ -7,7 +7,7 @@ using namespace std;
 
 int main(){
 	char opt;
-	cout << "Welcome to the Seabattle game (Author: Tu Yuanyang & He Jiachuan)\n\n";
+	cout << "Welcome to the Seabattle game (Author: Tu Yuanyang & He Jiangchuan)\n\n";
 	cout << "    1: Play!\n    2: Instruction" << endl;
 	cin >> opt;
 	system("cls");
