@@ -1,3 +1,5 @@
+// the program to show instruction
+
 #include <iostream>
 #include "instruction.h"
 
@@ -23,5 +25,5 @@ void instruction(){
   cout << "ENJOY AND GET READY FOR THE WAR CAPITAN!\n" << endl;
 
   cout << "Enter anything except 3 to Play, or enter 3 to if you want quit.\n" << endl;
-  
+
 }
