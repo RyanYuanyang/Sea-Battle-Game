@@ -1,3 +1,5 @@
+// The head file for printBoard.cpp
+
 #ifndef PRINTBOARD_H
 #define PRINTBOARD_H
 
