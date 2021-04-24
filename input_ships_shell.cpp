@@ -1,3 +1,5 @@
+// a program to report the info about the ships on the board
+
 #include<iostream>
 #include<cstdio>
 
