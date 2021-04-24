@@ -142,8 +142,8 @@ int AI(int diff)
 	char opt = '0';
 	while(opt != '1' && opt != '2')
 	{
-		cout<<"\n    Please choose the number of ships (both yours and AI's)"<<endl;
-		cout<<"    1.Default ( 1 for each type of ship)"<<endl;
+		cout<<"\n    Please choose the number of ships ( both yours and AI's )"<<endl;
+		cout<<"    1.Default ( 1 for each type of ship )"<<endl;
 		cout<<"    2.Customize"<<endl;
 		cin>>opt;
 		system("cls");
@@ -153,12 +153,8 @@ int AI(int diff)
 	if(opt == '1')
 	{
 		for(int i = 0; i<5; ++i)
-		{
 			ships[i] = 1;
-			s2[i] = 1;
-		}
 		tot = 20;
-		tot2 = 20;
 		cout<<"Default mode"<<endl;
 	}
 	else if(opt == '2')
@@ -170,7 +166,9 @@ int AI(int diff)
 		else if( tot == 0 ) cout<<"    No ships!"<<endl;
 		else chk_ships = 1;
 	}
-
+	for(int i = 0; i<5; ++i)
+		s2[i] = ships[i];
+	tot2 = tot; 
 
 	genBoard(board,ships);
 	genBoard(b2,s2);
@@ -256,7 +254,9 @@ int AI(int diff)
 			cout << "    Enemy missed!" << endl;
 
 	}
-
+	cout<< endl;
+	printBoard2(board,b2);
+	cout<< endl;
   if(count == tot)
   	cout<<"    You Have Sanked Enemy Fleet!\n    The Victory is Yours!\n" << endl << endl;
 	else
