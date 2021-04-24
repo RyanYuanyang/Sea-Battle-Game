@@ -1,3 +1,6 @@
+// The program which implement mode 3 of the game.
+
+
 #include<cstdio>
 #include<iostream>
 #include<ctime>
