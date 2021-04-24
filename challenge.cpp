@@ -136,6 +136,7 @@ char challenge(){
   	cout << endl;
     printBoard(board);
     cout << endl;
+
 		// report the ships left on the board
     cout << "    Enemy fleet:  Submarine(2) = " << ships[0] << " Destoryer(3) = " << ships[1] << " Cruiser(4) = " << ships[2] << " Battleship(5) = " << ships[3] << " Carrier(6) = " << ships[4] << endl << endl;
 		cout << "    " << shell << " shells left,   " << count << " hit." << endl << endl;
@@ -148,9 +149,11 @@ char challenge(){
 			cout << "    Denied, out of range! \n\n\n";
 	    printBoard(board);
 	    cout << endl;
+
 	    cout << "    Enemy fleet:  Submarine(2) = " << ships[0] << " Destoryer(3) = " << ships[1] << " Cruiser(4) = " << ships[2] << " Battleship(5) = " << ships[3] << " Carrier(6) = " << ships[4] << endl << endl;
 			cout << "    " << shell << " shells left,   " << count << " hit." << endl << endl;
     	cout << "    Choose position to attack (x y): " << endl;
+			
       cin.clear();
       cin.ignore(100, '\n');
       cin >> x >> y;
