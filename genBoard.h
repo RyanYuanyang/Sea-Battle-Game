@@ -1,3 +1,5 @@
+// The head file for genBoard.cpp
+
 #ifndef GENBOARD_H
 #define GENBOARD_H
 
