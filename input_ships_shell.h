@@ -1,3 +1,5 @@
+// The head file for input_ships_shell.cpp
+
 #ifndef INPUT_SHIPS_SHELL_H
 #define INPUT_SHIPS_SHELL_H
 
