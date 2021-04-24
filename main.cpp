@@ -1,3 +1,5 @@
+// main program of the game
+
 #include <iostream>
 #include "instruction.h"
 #include "challenge.h"
