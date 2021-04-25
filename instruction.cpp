@@ -5,6 +5,7 @@
 
 using namespace std;
 
+//this function is to print the instruction of the game
 void instruction(){
   cout << "Battleship game is a strategy type gussing game. \n" << endl;
 
