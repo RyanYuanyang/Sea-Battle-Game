@@ -31,7 +31,6 @@ void printBoard(int board[][11]){
 void printBoard2(int board[][11],int b2[][11])
 {
   cout << "         1   2   3   4   5   6   7   8   9  10 (x)                  1   2   3   4   5   6   7   8   9  10 (x)" << endl;
-  cout << "        ---------------------------------------                     ---------------------------------------"<<endl;
   //players's board
   for (int i = 0; i < 10; i++){
     if (i == 9)
@@ -62,7 +61,6 @@ void printBoard2(int board[][11],int b2[][11])
         cout << " ~ |"; // unknown
     }
     cout << endl;
-    cout << "        ---------------------------------------                     ---------------------------------------"<<endl;
   }
   cout << "    (y)                                                         (y)"<<endl;
 }

@@ -219,9 +219,9 @@ char challenge(){
 		cout << "    Ahhhh! The Enemy Fleet Has Destroyed Our Base, Gameover :(" << endl << endl;
 
 	cout << "The order you sunk the Enemy ships is:" << endl;
-	
+
 	if(sunk_list.empty()) cout << " Nothing :(" << endl;
-	
+
 	while( !sunk_list.empty() )
 	{
 		sink_ship = sunk_list.back();

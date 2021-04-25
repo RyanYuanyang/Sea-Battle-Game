@@ -79,7 +79,7 @@ int PLACE_SHIP(int a[11][11], int n, int tp)
 	jj = r2 % n;
 	//  ii,jj  is the starter position to check
 	//  r3  is the direction ( r3 = 0 means row  &  r3 = 1 means colum )
-	ci = CHKi(a,len,n,ii,jj); 
+	ci = CHKi(a,len,n,ii,jj);
 	cj = CHKj(a,len,n,ii,jj);// to check whether the ship could be placed horizontially or vertically
 
 	if(ci<0 && cj<0) return 0; // no available place
@@ -149,7 +149,7 @@ void genBoard(int B[][11],int S[])
 {
 	for(int i = 0; i<10; ++i)
 		for(int j = 0; j<10; ++j) B[i][j] = 0;
-	
+
 	GEN(B,10,S);
 	//PRINT_BOARD(B,10)
 }

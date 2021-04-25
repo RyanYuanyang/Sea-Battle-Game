@@ -11,9 +11,9 @@
 
 using namespace std;
 //a[][11] stores the board(and ships) , n is 10(n*n board) , pos is the shooting position
-int SHOOT(int a[][11], int n, int pos) 
+int SHOOT(int a[][11], int n, int pos)
 {
-	
+
 	int i,j;	//(i,j) is the postion
 	if(pos > n*n) return 0;
 	i = pos/n;
@@ -34,7 +34,7 @@ int SHOOT(int a[][11], int n, int pos)
 //a[][11] stores the board(and ships) , n is 10(n*n board)
 int IMPOSSIBLE(int a[][11], int n)
 {
-	
+
 	int ri,rj,s,cnt;
 	ri = rand();
 	ri = ri % (n);
@@ -51,9 +51,9 @@ int IMPOSSIBLE(int a[][11], int n)
 }
 //EASY mode AI will shoot randomly :D
 //a[][11] stores the board(and ships) , n is 10(n*n board)
-int EASY(int a[][11], int n) 
+int EASY(int a[][11], int n)
 {
-	
+
 	int rr,s,cnt;
 	rr = rand();
 	rr = rr*rr%19260817;
@@ -76,7 +76,7 @@ int EASY(int a[][11], int n)
 //a[][11] stores the board(and ships) , n is 10(n*n board)
 int NORMAL(int a[][11], int n)
 {
-	
+
 	int rr,s,cnt;
 	rr = rand();
 	rr%= 100;
@@ -88,13 +88,13 @@ int NORMAL(int a[][11], int n)
 //a[][11] stores the board(and ships) , n is 10(n*n board)
 int HARD(int a[][11], int n)
 {
-	
+
 	int rr,s,cnt;
 	rr = rand();
 	if(rr & 1) IMPOSSIBLE(a,n);
 	else EASY(a,n);
 }
-bool ships_left_AI[6][7]; 
+bool ships_left_AI[6][7];
 int ships_current_AI[6]; //this array is used to store the ships that not been sunk currently
 
 //this function is used to count the ships left on the board in AI mode
@@ -128,7 +128,7 @@ int Count_ships_left_AI(int board[][11], int ships[])
 
 //diff means the difficulty
 //This is the body function of AI mode
-int AI(int diff) 
+int AI(int diff)
 {
 	if(diff == 1)
 		cout << "    YOU CHOOSE 1: EASY MODE" << endl;
@@ -145,7 +145,7 @@ int AI(int diff)
 	int ships[11]; //player's ships
 	int s2[11];  //AI's ships
 	int x, y, chk_AI;
-	
+
 	//initialize the board
 	for (int i = 0; i < 10; i++)
 		for (int j = 0; j < 10; j++)
@@ -153,7 +153,7 @@ int AI(int diff)
 			board[i][j] = 0;
 			b2[i][j] = 0;
 		}
-	
+
 	for(int i = 0; i<5; ++i)
 	{
 		ships[i] = 0; s2[i] = 0;
@@ -188,7 +188,7 @@ int AI(int diff)
 	}
 	for(int i = 0; i<5; ++i)
 		s2[i] = ships[i];
-	tot2 = tot; 
+	tot2 = tot;
 
 	genBoard(board,ships);
 	genBoard(b2,s2); //generate player's and AI's board randomly with specified ship number
@@ -215,10 +215,10 @@ int AI(int diff)
 	    cout << endl;
 	    cout << "    Your  fleet:  Submarine(2) = " << ships[0] << " Destoryer(3) = " << ships[1];
 		cout << " Cruiser(4) = " << ships[2] << " Battleship(5) = " << ships[3] << " Carrier(6) = " << ships[4] << endl << endl << endl;
-	    
+
 		cout << "    Enemy fleet:  Submarine(2) = " << s2[0] << " Destoryer(3) = " << s2[1];
 		cout << " Cruiser(4) = " << s2[2] << " Battleship(5) = " << s2[3] << " Carrier(6) = " << s2[4] << endl << endl << endl;
-	
+
 	    cout << "    Choose position to attack (x y): ";
 	    cin >> x >> y;
 
@@ -278,7 +278,7 @@ int AI(int diff)
 	cout << endl;
 	printBoard2(board,b2); // print the final status of board
 	cout << endl;
-	
+
 	if(count == tot)
   		cout <<"    You Have Sanked Enemy Fleet!\n    The Victory is Yours!\n" << endl << endl;
 	else
