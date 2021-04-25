@@ -30,7 +30,8 @@ void printBoard(int board[][11]){
 //board[][11] and b2[][11] stors player's and AI's board respectively
 void printBoard2(int board[][11],int b2[][11])
 {
-  cout << "         1   2   3   4   5   6   7   8   9  10 (x)                  1   2   3   4   5   6   7   8   9  10 (x)\n" << endl;
+  cout << "         1   2   3   4   5   6   7   8   9  10 (x)                  1   2   3   4   5   6   7   8   9  10 (x)" << endl;
+  cout << "        ---------------------------------------                     ---------------------------------------"<<endl;
   //players's board
   for (int i = 0; i < 10; i++){
     if (i == 9)
@@ -49,9 +50,9 @@ void printBoard2(int board[][11],int b2[][11])
     }
     //AI's board
     if (i == 9)
-      cout << "                " << (i + 1) << ' ';
+      cout << "                " << (i + 1) << " |";
     else
-      cout << "                " << (i + 1) << "  ";
+      cout << "                " << (i + 1) << "  |";
     for (int j = 0; j < 10; j++){
       if (b2[i][j] == 1)
         cout << " X |"; // destroyed position
@@ -61,6 +62,7 @@ void printBoard2(int board[][11],int b2[][11])
         cout << " ~ |"; // unknown
     }
     cout << endl;
+    cout << "        ---------------------------------------                     ---------------------------------------"<<endl;
   }
   cout << "    (y)                                                         (y)"<<endl;
 }
