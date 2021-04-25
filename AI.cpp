@@ -225,58 +225,58 @@ int AI(int diff)
 	  cin >> x >> y;
 
 	  while (x > 10 || x < 1 || y > 10 || y < 1 || !cin){
-			system("cls");
-			cout << "    Denied, Not an Available Position.\n\n\n";
+		  system("cls");
+		  cout << "    Denied, Not an Available Position.\n\n\n";
 		  printBoard2(board,b2);
 		  cout << endl;
 		  cout << "    Enemy fleet:  Submarine(2) = " << ships[0] << " Destoryer(3) = " << ships[1] << " Cruiser(4) = " << ships[2] << " Battleship(5) = " << ships[3] << " Carrier(6) = " << ships[4] << endl << endl;
-	    cout << "    Choose position to attack: x y" << endl;
-			cin.clear();
-			cin.ignore(100, '\n');
-			cin >> x >> y;
+	          cout << "    Choose position to attack: x y" << endl;
+		  cin.clear();
+		  cin.ignore(100, '\n');
+		  cin >> x >> y;
 	   }
 
-	   x = x - 1;
-	   y = y - 1;
+	  x = x - 1;
+	  y = y - 1;
 
-	   cout << endl;
-	   system("cls");
-	   chk_denied = 0;
-	   if (b2[y][x] == 0){
-	 	   cout << "    Missed!" << endl << endl;
-			 b2[y][x] = -1;
+	  cout << endl;
+	  system("cls");
+	  chk_denied = 0;
+	  if (b2[y][x] == 0){
+		  cout << "    Missed!" << endl << endl;
+		  b2[y][x] = -1;
 	   }
-	   else if (b2[y][x] == 1 || b2[y][x] == -1){
-			 cout << "    Denied, The Position Has been Shot." << endl << endl;
-			 chk_denied = 1;
-	   }
-	   else{
-			 cout << "    Right on Target!"<< endl << endl;
-			 b2[y][x] = 1;
-			 count++;
-	   }
+	  else if (b2[y][x] == 1 || b2[y][x] == -1){
+		  cout << "    Denied, The Position Has been Shot." << endl << endl;
+		  chk_denied = 1;
+	  }
+	  else{
+		  cout << "    Right on Target!"<< endl << endl;
+		  b2[y][x] = 1;
+		  count++;
+	  }
+		
+	  if(chk_denied == 1)
+		  continue; //player has not shot an available place
 
- 		 if(chk_denied == 1)
-		   continue; //player has not shot an available place
-
-  	 if(diff == 1) //EASY
-			 chk_AI = EASY(board,10);
-		 else if(diff == 2) //NORMAL
-			 chk_AI = NORMAL(board,10);
-		 else if(diff == 3) //HARD
-			 chk_AI = HARD(board,10);
-		 else if(diff == 4) //IMPOSSIBLE
-			 chk_AI = IMPOSSIBLE(board,10);
+  	  if(diff == 1) //EASY
+		  chk_AI = EASY(board,10);
+	  else if(diff == 2) //NORMAL
+		  chk_AI = NORMAL(board,10);
+	  else if(diff == 3) //HARD
+		  chk_AI = HARD(board,10);
+	  else if(diff == 4) //IMPOSSIBLE
+		  chk_AI = IMPOSSIBLE(board,10);
 
 	  	// chk_AI = 1 --> AI shoot on your ships
 	  	// chk_AI = -1 --> AI shoot nothing
-		 if(chk_AI == 1)
-		 {
-			 count2++;
-			 cout << "    Your ship has been shot!" << endl;
-		 }
-		 else
-			 cout << "    Enemy missed!" << endl;
+	  if(chk_AI == 1)
+	  {
+		  count2++;
+		  cout << "    Your ship has been shot!" << endl;
+	  }
+	  else
+		  cout << "    Enemy missed!" << endl;
 
 	}
 	cout << endl;
