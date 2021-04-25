@@ -56,13 +56,29 @@ char challenge(){
 
 	// use fileio to manipulate user record
 	ofstream fout;
+	ifstream fin;
 	fout.open("record.txt", ios::app);
+	fin.open("record.txt");
 
 	// check wheter the fileio is successful
+
+	if (fin.fail()){
+		cout << "Error in file opening!" << endl;
+		exit(1);
+	}
+
 	if (fout.fail()){
 		cout << "Error in file opening!" << endl;
 		exit(1);
 	}
+
+	string firstLine;
+	getline (fin, firstLine);
+
+	// if the file is empty, then we shall initialize it to avoid failure
+	if (firstLine == "")
+		for (int i = 0; i < 10; i++)
+			fout << "empty" << endl;
 
 
 
