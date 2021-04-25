@@ -106,7 +106,7 @@ int PLACE_SHIP(int a[11][11], int n, int tp)
 int GEN(int a[11][11], int n, int S_num[])
 {
 	//n * n == board size
-	srand( (time(NULL)%19260817) );
+	srand( (time(0)%19260817) );
 
 	for(int i = 4; i>=0; --i)
 		for(int j = 1; j<=S_num[i]; ++j)
