@@ -64,7 +64,7 @@ When game ends, an ranking list would be generated, which records the number of 
 
 2. 2D arrais that represents the game board with 10 x 10 dimension is widely used to store the game status. Vector data type is used to store the record of challenge mode.
 
-3. Vector is used in function printRecord() , so dynamic memory management would be used to store the record of challenge mode.
+3. Vector is used in function printRecord() , so dynamic memory management would be used to store the record of challenge mode. Vector is also used in function challenge(), to store the order that player sunk the enemy's ships.
 
 4. The program will output a "record.txt" to store the records of challenge mode, and player can see these records in the game.
 
