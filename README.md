@@ -68,7 +68,7 @@ the record rank the number of attacks conducted in one play round and ranks them
 
 Player can access the record before the challenge mode/ after the challenge mode end.
 
-**Player is not recommanded to manipulate the record by directly accessing the file.**
+**It is assumed that player won't manipulate the record by directly accessing the file.**
 
 
 **The following features are implemented:**
