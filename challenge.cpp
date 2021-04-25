@@ -119,13 +119,13 @@ char challenge(){
 		cout << "    2. Enter anything else to see your local record" << endl;
 		cin >> opt;
 		if (opt != '1'){
-			system("cls");
+			system("clear");
 			// print the record
 			printRecord();
 		}
 	}
 
-	system("cls");
+	system("clear");
 
 	for(int i = 0; i<5; ++i)
 		ships[i] = 1;
@@ -166,7 +166,7 @@ char challenge(){
 
 	// input again when the input is invalid
     while (x > 10 || x < 1 || y > 10 || y < 1 || !cin){
-			system("cls");
+			system("clear");
 			cout << "    Denied, out of range! \n\n\n";
 	    printBoard(board);
 	    cout << endl;
@@ -184,7 +184,7 @@ char challenge(){
     y = y - 1;
 
     cout << endl;
-    system("cls");
+    system("clear");
 		// report missed when the position is empty
     if (board[y][x] == 0){
       cout << "    Missed!" << endl << endl;

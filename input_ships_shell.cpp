@@ -26,7 +26,7 @@ int input_ships_shell(int ships[], int &shell)
 		print_current_ships(ships);
 		cout<<"Input the number of Submarine (0~5)"<<endl;
 		cin>>num;
-		system("cls");
+		system("clear");
 	}
 
 	ships[0] = num;
@@ -37,7 +37,7 @@ int input_ships_shell(int ships[], int &shell)
 		print_current_ships(ships);
 		cout<<"Input the number of Destoryer (0~5)"<<endl;
 		cin>>num;
-		system("cls");
+		system("clear");
 	}
 
 	ships[1] = num;
@@ -48,7 +48,7 @@ int input_ships_shell(int ships[], int &shell)
 		print_current_ships(ships);
 		cout<<"Input the number of Cruiser (0~3)"<<endl;
 		cin>>num;
-		system("cls");
+		system("clear");
 	}
 
 	ships[2] = num;
@@ -59,7 +59,7 @@ int input_ships_shell(int ships[], int &shell)
 		print_current_ships(ships);
 		cout<<"Input the number of Battleship (0~3)"<<endl;
 		cin>>num;
-		system("cls");
+		system("clear");
 	}
 
 	ships[3] = num;
@@ -70,7 +70,7 @@ int input_ships_shell(int ships[], int &shell)
 		print_current_ships(ships);
 		cout<<"Input the number of Carrier (0~3)"<<endl;
 		cin>>num;
-		system("cls");
+		system("clear");
 	}
 
 	ships[4] = num;
@@ -85,7 +85,7 @@ int input_ships_shell(int ships[], int &shell)
 		print_current_ships(ships);
 		cout<<"Input the number of shells (0~99)"<< endl;
 		cin>>num;
-		system("cls");
+		system("clear");
 		if(num < tot)
 			cout<<"    Not enough shells!"<< endl;
 		else if(num > 99)
@@ -107,7 +107,7 @@ int input_ships(int ships[])
 		print_current_ships(ships);
 		cout<<"Input the number of Submarine (0~5)"<<endl;
 		cin>>num;
-		system("cls");
+		system("clear");
 	}
 
 	ships[0] = num;
@@ -118,7 +118,7 @@ int input_ships(int ships[])
 		print_current_ships(ships);
 		cout<<"Input the number of Destoryer (0~5)"<<endl;
 		cin>>num;
-		system("cls");
+		system("clear");
 	}
 
 	ships[1] = num;
@@ -129,7 +129,7 @@ int input_ships(int ships[])
 		print_current_ships(ships);
 		cout<<"Input the number of Cruiser (0~3)"<<endl;
 		cin>>num;
-		system("cls");
+		system("clear");
 	}
 
 	ships[2] = num;
@@ -140,7 +140,7 @@ int input_ships(int ships[])
 		print_current_ships(ships);
 		cout<<"Input the number of Battleship (0~3)"<<endl;
 		cin>>num;
-		system("cls");
+		system("clear");
 	}
 
 	ships[3] = num;
@@ -151,7 +151,7 @@ int input_ships(int ships[])
 		print_current_ships(ships);
 		cout<<"Input the number of Carrier (0~3)"<<endl;
 		cin>>num;
-		system("cls");
+		system("clear");
 	}
 
 	ships[4] = num;
@@ -161,6 +161,6 @@ int input_ships(int ships[])
 	for(int i = 0; i<5; ++i) //count the total grid of ships
 		tot+= ships[i] * (i+2);
 
-		
+
 	return tot;
 }

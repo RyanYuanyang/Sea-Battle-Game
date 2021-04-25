@@ -22,16 +22,17 @@ int main(){
     cin >> opt;
   }
 
-  system("cls");
+  system("clear");
 
   if (opt == '2'){
     instruction();
     cin >> opt;
   }
 
-  system("cls");
+  system("clear");
 
 	// the choosing mode menu
+
 	while (opt != '3'){
 		cout << endl;
 		cout << endl;
@@ -41,14 +42,16 @@ int main(){
 		cout << "    2: Challenge Mode" << endl;
 		cout << "    3: Quit" << endl;
 		cin >> opt;
-		system("cls");
+		system("clear");
 
+		// calling the 2 mode
 		while (opt == '2')
 		{
 			opt = challenge();
-			system("cls");
+			system("clear");
 		}
 
+		// calling the 1 mode
 		if (opt == '1'){
 			int dif = 0;
 
@@ -68,7 +71,7 @@ int main(){
 			cout << "  Your win goal is to defeat the enemy fleet, otherwise you lose.\n" << endl;
 
 			// choosing the difficulty
-			while(dif > 4 || dif <1)
+			while(!dif || dif > 4 || dif <1)
 			{
 				cout << "  Choosing Difficulty:\n" << endl;
 				cout << "    1: EASY" << endl;
@@ -76,13 +79,14 @@ int main(){
 				cout << "    3: HARD" << endl;
 				cout << "    4: IMPOSSIBLE" << endl;
 				cin >> dif;
-				system("cls");
+				system("clear");
 			}
 			AI(dif);
 
 		}
 	}
 
+	// when user input 3 and the program end
 	cout << "Have a Nice Day :)" << endl;
 
 	return 0;
