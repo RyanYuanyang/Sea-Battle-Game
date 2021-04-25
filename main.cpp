@@ -10,7 +10,10 @@ using namespace std;
 int main(){
 	// the main menu
 	char opt;
-  cout << "Welcome to the Seabattle game (Author: Tu Yuanyang & He Jiachuan)\n" << endl;
+	cout << endl;
+	cout << endl;
+	cout << endl;
+  cout << "  Welcome to the Seabattle game (Author: Tu Yuanyang & He Jiachuan)\n" << endl;
   cout << "    1: Play!\n    2: Instruction" << endl;
   cin >> opt;
 
@@ -19,28 +22,31 @@ int main(){
     cin >> opt;
   }
 
-  system("clear");
+  system("cls");
 
   if (opt == '2'){
     instruction();
     cin >> opt;
   }
 
-  system("clear");
+  system("cls");
 
 	// the choosing mode menu
 	while (opt != '3'){
-		cout << "Choosing Mode:\n" << endl;
+		cout << endl;
+		cout << endl;
+		cout << endl;
+		cout << "  Choosing Mode:\n" << endl;
 		cout << "    1: Fight Against AI" << endl;
 		cout << "    2: Challenge Mode" << endl;
 		cout << "    3: Quit" << endl;
 		cin >> opt;
-		system("clear");
+		system("cls");
 
 		while (opt == '2')
 		{
 			opt = challenge();
-			system("clear");
+			system("cls");
 		}
 
 		if (opt == '1'){
@@ -70,7 +76,7 @@ int main(){
 				cout << "    3: HARD" << endl;
 				cout << "    4: IMPOSSIBLE" << endl;
 				cin >> dif;
-				system("clear");
+				system("cls");
 			}
 			AI(dif);
 
