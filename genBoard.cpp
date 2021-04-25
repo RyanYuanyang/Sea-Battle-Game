@@ -1,155 +1,247 @@
-// The program to generate randomly the game board with ships
+// The program which implement mode 2 of the game.
 
-#include<cstdio>
-#include<iostream>
-#include<ctime>
-#include<cstdlib>
+#include <iostream>
+#include <fstream>
+#include <ctime>
+#include <vector>
+#include "genBoard.h"
+#include "printBoard.h"
+#include "printRecord.h"
+
+#ifdef __linux
+#define ("cls") ("clear")
+#endif
+
 using namespace std;
 
-int S[10]; //the number of each type of ship
-//0 == nothing   2 == Submarine  3 == Destoryer  4 == Cruiser  5 == Battleship  6 == Carrier
+bool ships_left[6][7];
+int ships_current[6];
 
-int rd() // generate a random number
+// a function that record the current ships on the board and retuen the sinked ship.
+int Count_ships_left(int board[][11], int ships[])
 {
-	int rr;
-	rr = rand();
-	rr = rr*rr%19260817;  //to make the random number more diffuse
-	// mod by a big prime to avoid random numbers concenrate on some values
-	return rr;
-}
-//check whether the i lines could place this ship
-//a[][] stores the board, len means the length of ship, n is 10 (n*n board)
-//len == length of the ship   n -->  Board Size (n*n)
-//(st1,st2) is the starter position to check is there is a place for the ship
-int CHKi(int a[11][11], int len, int n, int st1, int st2)
-{
-	int p;
-	for(int i = 0; i<n; ++i)
-		for(int j = 0; j<n; ++j)
-		{
-			p=0;
-			if( (i+st1)%n +len < n )
-			for(int k = 0; k < len; ++k)
-			{
-				if(!a[ k + (i+st1)%n ][ (j+st2) % n ]) p++;
-				if(p == len)
-					return ( (i+st1) % n )*100+( (j+st2) % n );
-				// There is a place for the ship
-		// [ (i+st1) % n , (j+st2) % n ] represents the starter position of a ship
-				if(a[ k + (i+st1)%n ][ (j+st2) % n ] > 1) break;
-			}
-		}
-	return -1;// not available
-}
-//check whether the j lines could place this ship
-//a[][] stores the board, len means the length of ship, n is 10 (n*n board)
-//len == length of the ship   n -->  Board Size (n*n)
-//(st1,st2) is the starter position to check is there is a place for the ship
-int CHKj(int a[11][11], int len, int n, int st1, int st2)
-{
-	int p;
-	for(int i = 0; i<n; ++i)
-		for(int j = 0; j<n; ++j)
-		{
-			p=0;
-			if( (j+st2)%n +len < n )
-			for(int k = 0; k < len; ++k)
-			{
-				if(!a[ (i+st1) % n ][ k + (j+st2)%n ]) p++;
-				if(p == len)
-					return ( (i+st1) % n )*100+( (j+st2) % n );
-				// There is a for the ship
-				if(a[ (i+st1) % n ][ k + (j+st2)%n ] > 1) break;
-			}
-		}
-	return -1;// not available
-}
-// place the ship on the board
-// n*n == Board Size  & len == ship lenth
-int PLACE_SHIP(int a[11][11], int n, int tp)
-{
-
-	int r1,r2,r3,siz,ci,cj,ships_num,len;
-	len = tp%10;
-	r1 = rd();
-	r2 = rd();
-	r3 = rd()%2;
-	int ii,jj;
-	ii = r1 % n;
-	jj = r2 % n;
-	//  ii,jj  is the starter position to check
-	//  r3  is the direction ( r3 = 0 means row  &  r3 = 1 means colum )
-	ci = CHKi(a,len,n,ii,jj); 
-	cj = CHKj(a,len,n,ii,jj);// to check whether the ship could be placed horizontially or vertically
-
-	if(ci<0 && cj<0) return 0; // no available place
-
-	if(r3) // ship on an i line (row)
+	for(int i = 0; i<5; ++i)
 	{
-		if(ci >= 0)
-			for(int k = 0; k<len; ++k)	a[ci/100 + k][ci%100] = tp;
-		else if(cj >= 0)
-			for(int k = 0; k<len; ++k)	a[cj/100][cj%100 + k] = tp;
+		ships_current[i] = 0;
+		for(int j = 0; j<6; ++j)
+			ships_left[i][j] = 0; // i -->type of ship   j --> number of ships
 	}
-	else // ship on a j line (colum)
-	{
-		if(cj >= 0)
-			for(int k = 0; k<len; ++k)	a[cj/100][cj%100 + k] = tp;
-		else if(ci >= 0)
-			for(int k = 0; k<len; ++k)	a[ci/100 + k][ci%100] = tp;
-	}
-	return 1; // success
-}
-//this function is used to intiallize the random function and place the ships stored in S_num[] array
-//a[][] stores the board, n is 10 (the board is n*n size)
-//S_num[] stores number of ships
-int GEN(int a[11][11], int n, int S_num[])
-{
-	//n * n == board size
-	srand( (time(0)%19260817) );
 
-	for(int i = 4; i>=0; --i)
-		for(int j = 1; j<=S_num[i]; ++j)
-			if(PLACE_SHIP(a,n,(i+2) + j*10) == 0) //i+2 == length of ship
-				printf("FAILED TO PLACE %d\n",i+2);
+	for(int i = 0; i<10; ++i)
+		for(int j = 0; j<10; ++j)
+			if(board[i][j] > 1)
+				if(ships_left[ board[i][j]%10 -2 ][ board[i][j]/10 ] == 0)
+				{
+					ships_left[ board[i][j]%10 -2 ][ board[i][j]/10 ] = 1;
+					ships_current[ board[i][j]%10 -2 ]++;
+				}
+
+	for(int i = 0; i<5; ++i)
+		if(ships_current[i] < ships[i])
+		{
+			ships[i] = ships_current[i];
+			return (i+2);
+		}
 
 	return 0;
 }
+vector <int> sunk_list;
+// the body function of challenge mode
+char challenge(){
 
-//this function is to output the board generated here
-//it is used to check whether the board is generated correctly
-/*
-void PRINT_BOARD(int a[11][11],int n)
-{
-	printf("    ");
-	for(int j = 0; j<n; ++j)
-		printf("%c ",'A'+j);
-	printf("\n");
+	int count = 0;
+	int shell = 50;
+	int board[11][11];
+	int ships[11];
+	int x, y;
+	int sink_ship;
+	int chk_ships = 0, tot;
 
-	for(int i = 0; i<n; ++i)
-	{
-		printf("I%d  ",i);
-//0 == nothing   2 == Submarine  3 == Destoryer  4 == Cruiser  5 == Battleship  6 == Carrier
-		for(int j = 0; j<n; ++j)
-		{
-			if(a[i][j])
-				printf("%d ",a[i][j]);
-			else
-				printf(". ");
-		}
-		printf("\n");
+
+	// use fileio to manipulate user record
+	ofstream fout;
+	fout.open("record.txt", ios::app);
+
+	// check wheter the fileio is successful
+	if (fout.fail()){
+		cout << "Error in file opening!" << endl;
+		exit(1);
 	}
-}*/
 
-//genboard is the body function of this part, it will initialize first
-//and is used to generate the board randomly with specified number of ships
-//B[]  array is used to record the board
-//S[]  array is used to record the number of each type of ship
-void genBoard(int B[][11],int S[])
-{
-	for(int i = 0; i<10; ++i)
-		for(int j = 0; j<10; ++j) B[i][j] = 0;
+
+
+  //initialize the board
+  for (int i = 0; i < 10; i++){
+    for (int j = 0; j < 10; j++){
+      board[i][j] = 0;
+    }
+  }
+  for(int i = 0; i<5; ++i) ships[i] = 0;
+
+	char opt = ' ';
+
+	// print the instructions
+	cout << "\n\n";
+	cout << "  Challenge mode is an alternative game play of Seabattle game we came up\n" << endl;
+	cout << "  In challenge mode, you only have limited amount of shells (60) to defeat the enemy fleet" << endl;
+	cout << "  You don't have a fleet, instead, you are defending your base from enemy's attack" << endl;
+	cout << "  The enemy fleet contains only one of the each type of ship\n" << endl;
+	cout << "  They are: " << endl;
+	cout << "      1 Submarine: 2 units " << endl;
+	cout << "      1 Destoryer: 3 units" << endl;
+	cout << "      1 Cruiser: 4 units" << endl;
+	cout << "      1 Battleship: 5 units" << endl;
+	cout << "      1 Carrier: 6 units\n" << endl;
+	cout << "  If you defeat the enemy fleet within the limited shells, you win!" << endl;
+	cout << "  Otherwise, if you are ran out of shells and there are still enemy ships left, the game failed :(\n" << endl;
+	cout << "  Each of the winning game play will be recorded, and your record will be ranked by the amount of shells you use." << endl;
+	cout << "  The record will be stored in a txt file and you can call/read it in the game. \n\n\n";
+
+	// options to show the record or start game.
+	while(opt != '1')
+	{
+		cout << "\n  Choose an option: " << endl;
+		cout << "    1. Enter 1 to start" << endl;
+		cout << "    2. Enter anything else to see your local record" << endl;
+		cin >> opt;
+		if (opt != '1'){
+			system("cls");
+			// print the record
+			printRecord();
+		}
+	}
+
+	system("cls");
+
+	for(int i = 0; i<5; ++i)
+		ships[i] = 1;
+
+	shell = 60;
+	tot = 20;
+	cout << "Destroy The Enemy Fleet and Protect Our Base! " << endl;
+
+	// auto-generate the enemy fleet
+	genBoard(board,ships);
+	cout << endl;
+
+
+  while (count != tot && shell != 0){
+		// report when the player have sinked an ship
+  	sink_ship = Count_ships_left(board,ships);
+  	if(sink_ship)
+  	{
+  		cout << "    Good job capitan, you have sank an ";
+  		if(sink_ship == 2) cout << "Submarine !" << endl;
+  		if(sink_ship == 3) cout << "Destoryer !" << endl;
+  		if(sink_ship == 4) cout << "Cruiser !" << endl;
+  		if(sink_ship == 5) cout << "Battleship !" << endl;
+  		if(sink_ship == 6) cout << "Carrier !" << endl;
+  		sunk_list.push_back(sink_ship);
+	  }
+
+  	cout << endl;
+    printBoard(board);
+    cout << endl;
+
+	// report the ships left on the board
+    cout << "    Enemy fleet:  Submarine(2) = " << ships[0] << " Destoryer(3) = " << ships[1];
+	cout << " Cruiser(4) = " << ships[2] << " Battleship(5) = " << ships[3] << " Carrier(6) = " << ships[4] << endl << endl;
+		cout << "    " << shell << " shells left,   " << count << " hit." << endl << endl;
+    cout << "    Choose position to attack (x y): ";
+    cin >> x >> y;
+
+	// input again when the input is invalid
+    while (x > 10 || x < 1 || y > 10 || y < 1 || !cin){
+			system("cls");
+			cout << "    Denied, out of range! \n\n\n";
+	    printBoard(board);
+	    cout << endl;
+
+	    cout << "    Enemy fleet:  Submarine(2) = " << ships[0] << " Destoryer(3) = " << ships[1] << " Cruiser(4) = " << ships[2] << " Battleship(5) = " << ships[3] << " Carrier(6) = " << ships[4] << endl << endl;
+			cout << "    " << shell << " shells left,   " << count << " hit." << endl << endl;
+    	cout << "    Choose position to attack (x y): " << endl;
+
+      cin.clear();
+      cin.ignore(100, '\n');
+      cin >> x >> y;
+    }
+
+    x = x - 1;
+    y = y - 1;
+
+    cout << endl;
+    system("cls");
+		// report missed when the position is empty
+    if (board[y][x] == 0){
+      cout << "    Missed!" << endl << endl;
+      board[y][x] = -1;
+    }
+		// input again when the input is invalid
+    else if (board[y][x] == 1 || board[y][x] == -1){
+      cout << "    Denied, The Position Has been Shot." << endl << endl;
+      shell++;
+    }
+		// report hit when the position has a ship
+    else{
+      cout << "    Right on Target!"<< endl << endl;
+      board[y][x] = 1;
+      count++;
+    }
+    shell--;
+  }
+	sink_ship = Count_ships_left(board,ships);
+  	if(sink_ship)
+  	{
+  		cout << "    Good job capitan, you have sank an ";
+  		if(sink_ship == 2) cout << "Submarine !" << endl;
+  		if(sink_ship == 3) cout << "Destoryer !" << endl;
+  		if(sink_ship == 4) cout << "Cruiser !" << endl;
+  		if(sink_ship == 5) cout << "Battleship !" << endl;
+  		if(sink_ship == 6) cout << "Carrier !" << endl;
+  		sunk_list.push_back(sink_ship);
+	}
 	
-	GEN(B,10,S);
-	//PRINT_BOARD(B,10)
+  if(count == tot){ //win
+		// get the current time
+		time_t now = time(0);
+		// convert now to string form
+		char* dt = ctime(&now);
+		// update the record with the shell used and the current time
+		fout << 60 - shell << "                        " << dt;
+
+		cout << "    You Have Sanked Enemy Fleet! \n    The Victory is Yours! \n" << endl << endl;
+		fout.close();
+	}
+	else // fail
+		cout << "    Ahhhh! The Enemy Fleet Has Destroyed Our Base, Gameover :(" << endl << endl;
+		
+	cout << "The order you sunk the Enemy ships is:" << endl;
+	
+	if(sunk_list.empty()) cout << " Nothing :(" << endl;
+	
+	while( !sunk_list.empty() )
+	{
+		sink_ship = sunk_list.back();
+		sunk_list.pop_back();
+		if(sink_ship == 2) cout << "Submarine" << endl;
+  		if(sink_ship == 3) cout << "Destoryer" << endl;
+  		if(sink_ship == 4) cout << "Cruiser" << endl;
+  		if(sink_ship == 5) cout << "Battleship" << endl;
+  		if(sink_ship == 6) cout << "Carrier" << endl;
+	}
+	cout << endl << endl;
+  // options when finish a round
+	cout << "    Choose an option: " << endl;
+	cout << "    1. Play Against the AI\n    2. Play Challenge Mode Again!\n    3. Quit\n    4. Enter Anything Else to See the Local Record";
+	cin >> opt;
+
+	// when user wants to see the record
+	while (opt != '1' && opt != '2' && opt != '3'){
+		printRecord();
+		cout << "    Choose an option: " << endl;
+		cout << "    1. Play Against the AI\n    2. Play Challenge Mode Again!\n    3. Quit\n    4. Enter Anything Else to See the Local Record";
+		cin >> opt;
+	}
+
+	return opt;
 }
