@@ -223,7 +223,7 @@ int AI(int diff)
 	    cin >> x >> y;
 
 	    while (x > 10 || x < 1 || y > 10 || y < 1 || !cin){
-			system("cls");
+			system("clear");
 			cout << "    Denied, Not an Available Position.\n\n\n";
 		    printBoard2(board,b2);
 		    cout << endl;
@@ -238,7 +238,7 @@ int AI(int diff)
 	    y = y - 1;
 
 	    cout << endl;
-	    system("cls");
+	    system("clear");
 	    chk_denied = 0;
 	    if (b2[y][x] == 0){
 			cout << "    Missed!" << endl << endl;
