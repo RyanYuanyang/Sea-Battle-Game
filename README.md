@@ -6,6 +6,11 @@ _He Jiangchuan 3035771945_
 
 _Tu Yuanyang 3035832476_
 
+**Quick Start**
+
+After downloading all the files into a repo in linux, go to the repo that stores all the files, type in $ make, and type in $ ./Seabattle.
+The program will then start.
+
 
 **Battleship Game**
 
