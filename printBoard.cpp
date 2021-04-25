@@ -4,6 +4,8 @@
 
 using namespace std;
 
+//this function is used to output enemy's board
+//board[][11] stores the board
 void printBoard(int board[][11]){
   cout << "         1   2   3   4   5   6   7   8   9  10 (x)\n" << endl;
   for (int i = 0; i < 10; i++){
@@ -24,6 +26,8 @@ void printBoard(int board[][11]){
   cout<<"    (y)"<<endl;
 }
 
+//this function is used to output both player's and AI's board
+//board[][11] and b2[][11] stors player's and AI's board respectively
 void printBoard2(int board[][11],int b2[][11])
 {
   cout << "         1   2   3   4   5   6   7   8   9  10 (x)                  1   2   3   4   5   6   7   8   9  10 (x)\n" << endl;
