@@ -21,7 +21,7 @@ void instruction(){
 
   cout << "  Mode 2: Challenge Mode\n" << endl;
 
-  cout << "Detailed machenisms of each mode will be introduced befor the game start. \n" << endl;
+  cout << "Detailed machenisms of each mode will be introduced before the game start. \n" << endl;
 
   cout << "ENJOY AND GET READY FOR THE WAR CAPITAN!\n" << endl;
 
