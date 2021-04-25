@@ -35,12 +35,12 @@ int main(){
 		cout << "    2: Challenge Mode" << endl;
 		cout << "    3: Quit" << endl;
 		cin >> opt;
-		system("cls");
+		system("clear");
 
 		while (opt == '2')
 		{
 			opt = challenge();
-			system("cls");
+			system("clear");
 		}
 
 		if (opt == '1'){
@@ -70,7 +70,7 @@ int main(){
 				cout << "    3: HARD" << endl;
 				cout << "    4: IMPOSSIBLE" << endl;
 				cin >> dif;
-				system("cls");
+				system("clear");
 			}
 			AI(dif);
 
