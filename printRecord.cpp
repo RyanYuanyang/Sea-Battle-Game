@@ -17,6 +17,7 @@ void printRecord(){
   ifstream fin;
   fin.open("record.txt");
 
+  // prevent the fail calling
   if (fin.fail()){
     cout << "Error in file opening!" << endl;
     exit(1);
@@ -28,6 +29,8 @@ void printRecord(){
     record.push_back(x);
   }
 
+  // the record is sorted by the number of shells player used in each round
+  // the lowest the best
   sort(record.begin(), record.end());
   cout << "Ranking (shells consumed)" << "    " << "Date" << endl;
   vector<string>::iterator itr;
