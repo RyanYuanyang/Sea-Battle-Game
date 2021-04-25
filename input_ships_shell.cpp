@@ -1,10 +1,10 @@
-// a program to report the info about the ships on the board
-
 #include<iostream>
 #include<cstdio>
 
 using namespace std;
 
+// this function is used to print the number of each type of ships
+// ships[]  stors the number of each type of ships
 void print_current_ships(int ships[])
 {
 	cout<<"Current ships:"<< endl << endl;
@@ -15,6 +15,9 @@ void print_current_ships(int ships[])
 	cout<<"    Carrier: "<< ships[4] << endl << endl;
 }
 
+// this function is used to store the number of each type of ships and shells from player's input
+// and return the number of total grids of ships
+// ships[]  stors the number of each type of ships, shell stores the number of shells
 int input_ships_shell(int ships[], int &shell)
 {
 	int num = -1;
@@ -81,7 +84,9 @@ int input_ships_shell(int ships[], int &shell)
 	shell = num;
 	return tot;
 }
-
+//this function is similar with the function above
+//it stores the number of each type of ships but not the shells
+//ships[]  stors the number of each type of ships
 int input_ships(int ships[])
 {
 	int num = -1;
