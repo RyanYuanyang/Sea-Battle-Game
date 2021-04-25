@@ -148,7 +148,8 @@ void PRINT_BOARD(int a[11][11],int n)
 void genBoard(int B[][11],int S[])
 {
 	for(int i = 0; i<10; ++i)
-		for(int j = 0; j<10; ++j) B[i][j] = 0;
+		for(int j = 0; j<10; ++j)
+			B[i][j] = 0;
 
 	GEN(B,10,S);
 	//PRINT_BOARD(B,10)
