@@ -71,7 +71,7 @@ Player can access the record before the challenge mode/ after the challenge mode
 **It is assumed that player won't manipulate the record by directly accessing the file.**
 
 
-**The following features are implemented:**
+**The following features are implemented to fulfill the requirements:**
 
 1. Random is used to generate the arrangement of player’s fleet and the enemy’s fleet. Also, random is heavily relied in mode 1 to control the action of the computer.
 
@@ -79,7 +79,7 @@ Player can access the record before the challenge mode/ after the challenge mode
 
 3. Vector is used in function printRecord() , so dynamic memory management would be used to store the record of challenge mode. Vector is also used in challenge mode to store the order that player sunk the enemy's ships.
 
-4. A file named "record.txt" that ranks the best record of player in challenging mode (with the date when each play round is conducted) would be generated/outputed and then it would also be inputed back into the program each time the players call the record.
+4. A file named "record.txt" that ranks the best record of player in challenging mode (with the date when each play round is conducted) would be generated/output and then it would also be input back into the program each time the players call the record.
 
 6. Codes is in multiple files according to their functions. For example, a file named main.cpp is the main body of the program, AI.cpp would be the program of the AI opponent, a file named printBoard.cpp would be the program to print the 2D array into a game board, and multiple header files would be created to declare different functions being used in the whole program.
 
