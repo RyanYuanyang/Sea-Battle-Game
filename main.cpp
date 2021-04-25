@@ -19,7 +19,7 @@ int main(){
     cin >> opt;
   }
 
-  system("cls");
+  system("clear");
 
   if (opt == '2'){
     instruction();
