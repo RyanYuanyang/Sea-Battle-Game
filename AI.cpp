@@ -190,6 +190,8 @@ int AI(int diff)
 		s2[i] = ships[i];
 	tot2 = tot;
 
+	cout << "The enemy fleet was found! Destroy them or we will die!";
+
 	genBoard(board,ships);
 	genBoard(b2,s2); //generate player's and AI's board randomly with specified ship number
 	cout << endl;
