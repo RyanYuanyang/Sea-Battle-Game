@@ -30,7 +30,7 @@ void printBoard(int board[][11]){
 //board[][11] and b2[][11] stors player's and AI's board respectively
 void printBoard2(int board[][11],int b2[][11])
 {
-  cout << "         1   2   3   4   5   6   7   8   9  10 (x)                  1   2   3   4   5   6   7   8   9  10 (x)" << endl;
+  cout << "         1   2   3   4   5   6   7   8   9  10 (x)                   1   2   3   4   5   6   7   8   9  10 (x)" << endl;
   //players's board
   for (int i = 0; i < 10; i++){
     if (i == 9)
