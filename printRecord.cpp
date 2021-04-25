@@ -1,4 +1,4 @@
-// a program to print player's record in mode 2 on screen
+// a program to print player's record in mode 2 (challenge mode) on screen
 
 #include <iostream>
 #include <vector>
@@ -8,6 +8,8 @@
 
 using namespace std;
 
+// this function is used to print player's record in mode 2 (challenge mode)
+// the record is stored in record.txt
 void printRecord(){
 
   int count = 0;
