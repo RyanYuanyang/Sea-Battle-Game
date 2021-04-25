@@ -166,7 +166,7 @@ int AI(int diff)
 		cout <<"    1.Default ( 1 for each type of ship )"<< endl;
 		cout <<"    2.Customize"<<endl;
 		cin >> opt;
-		system("clear");
+		system("cls");
 	}
 	int chk_ships = 0, tot, tot2;
 
@@ -201,80 +201,82 @@ int AI(int diff)
 
 	while (count != tot && count2 != tot2)
 	{
-	  	sink_ship = Count_ships_left_AI(board,ships);
-	  	sink_ship = Count_ships_left_AI(b2,s2);
-	  	if(sink_ship)
-	  	{
-	  		cout << "\n    You sank an enemy ";
-	  		if(sink_ship == 2) cout << "Submarine !" << endl;
-	  		if(sink_ship == 3) cout << "Destoryer !" << endl;
-	  		if(sink_ship == 4) cout << "Cruiser !" << endl;
-	  		if(sink_ship == 5) cout << "Battleship !" << endl;
-	  		if(sink_ship == 6) cout << "Carrier !" << endl;
+	  sink_ship = Count_ships_left_AI(board,ships);
+	  sink_ship = Count_ships_left_AI(b2,s2);
+	  if(sink_ship)
+	  {
+	  	cout << "\n    You sank an enemy ";
+	  	if(sink_ship == 2) cout << "Submarine !" << endl;
+	  	if(sink_ship == 3) cout << "Destoryer !" << endl;
+	 		if(sink_ship == 4) cout << "Cruiser !" << endl;
+	 		if(sink_ship == 5) cout << "Battleship !" << endl;
+  		if(sink_ship == 6) cout << "Carrier !" << endl;
 		}
-	  	cout << endl;
-	    printBoard2(board,b2);
-	    cout << endl;
-	    cout << "    Your  fleet:  Submarine(2) = " << ships[0] << " Destoryer(3) = " << ships[1];
+	  cout << endl;
+	  printBoard2(board,b2);
+	  cout << endl;
+	  cout << "    Your  fleet:  Submarine(2) = " << ships[0] << " Destoryer(3) = " << ships[1];
 		cout << " Cruiser(4) = " << ships[2] << " Battleship(5) = " << ships[3] << " Carrier(6) = " << ships[4] << endl << endl << endl;
 
 		cout << "    Enemy fleet:  Submarine(2) = " << s2[0] << " Destoryer(3) = " << s2[1];
 		cout << " Cruiser(4) = " << s2[2] << " Battleship(5) = " << s2[3] << " Carrier(6) = " << s2[4] << endl << endl << endl;
 
-	    cout << "    Choose position to attack (x y): ";
-	    cin >> x >> y;
+	  cout << "    Choose position to attack (x y): ";
+	  cin >> x >> y;
 
-	    while (x > 10 || x < 1 || y > 10 || y < 1 || !cin){
-			system("clear");
+	  while (x > 10 || x < 1 || y > 10 || y < 1 || !cin){
+			system("cls");
 			cout << "    Denied, Not an Available Position.\n\n\n";
-		    printBoard2(board,b2);
-		    cout << endl;
-		    cout << "    Enemy fleet:  Submarine(2) = " << ships[0] << " Destoryer(3) = " << ships[1] << " Cruiser(4) = " << ships[2] << " Battleship(5) = " << ships[3] << " Carrier(6) = " << ships[4] << endl << endl;
-	    	cout << "    Choose position to attack: x y" << endl;
+		  printBoard2(board,b2);
+		  cout << endl;
+		  cout << "    Enemy fleet:  Submarine(2) = " << ships[0] << " Destoryer(3) = " << ships[1] << " Cruiser(4) = " << ships[2] << " Battleship(5) = " << ships[3] << " Carrier(6) = " << ships[4] << endl << endl;
+	    cout << "    Choose position to attack: x y" << endl;
 			cin.clear();
 			cin.ignore(100, '\n');
 			cin >> x >> y;
-	    }
+	   }
 
-	    x = x - 1;
-	    y = y - 1;
+	   x = x - 1;
+	   y = y - 1;
 
-	    cout << endl;
-	    system("clear");
-	    chk_denied = 0;
-	    if (b2[y][x] == 0){
-			cout << "    Missed!" << endl << endl;
-			b2[y][x] = -1;
-	    }
-	    else if (b2[y][x] == 1 || b2[y][x] == -1){
-			cout << "    Denied, The Position Has been Shot." << endl << endl;
-			chk_denied = 1;
-	    }
-	    else{
-			cout << "    Right on Target!"<< endl << endl;
-			b2[y][x] = 1;
-			count++;
-	    }
- 		if(chk_denied == 1) continue; //player has not shot an available place
+	   cout << endl;
+	   system("cls");
+	   chk_denied = 0;
+	   if (b2[y][x] == 0){
+	 	   cout << "    Missed!" << endl << endl;
+			 b2[y][x] = -1;
+	   }
+	   else if (b2[y][x] == 1 || b2[y][x] == -1){
+			 cout << "    Denied, The Position Has been Shot." << endl << endl;
+			 chk_denied = 1;
+	   }
+	   else{
+			 cout << "    Right on Target!"<< endl << endl;
+			 b2[y][x] = 1;
+			 count++;
+	   }
 
-  		if(diff == 1) //EASY
-			chk_AI = EASY(board,10);
-		else if(diff == 2) //NORMAL
-			chk_AI = NORMAL(board,10);
-		else if(diff == 3) //HARD
-			chk_AI = HARD(board,10);
-		else if(diff == 4) //IMPOSSIBLE
-			chk_AI = IMPOSSIBLE(board,10);
+ 		 if(chk_denied == 1)
+		   continue; //player has not shot an available place
+
+  	 if(diff == 1) //EASY
+			 chk_AI = EASY(board,10);
+		 else if(diff == 2) //NORMAL
+			 chk_AI = NORMAL(board,10);
+		 else if(diff == 3) //HARD
+			 chk_AI = HARD(board,10);
+		 else if(diff == 4) //IMPOSSIBLE
+			 chk_AI = IMPOSSIBLE(board,10);
 
 	  	// chk_AI = 1 --> AI shoot on your ships
 	  	// chk_AI = -1 --> AI shoot nothing
-		if(chk_AI == 1)
-		{
-			count2++;
-			cout << "    Your ship has been shot!" << endl;
-		}
-		else
-			cout << "    Enemy missed!" << endl;
+		 if(chk_AI == 1)
+		 {
+			 count2++;
+			 cout << "    Your ship has been shot!" << endl;
+		 }
+		 else
+			 cout << "    Enemy missed!" << endl;
 
 	}
 	cout << endl;
@@ -282,7 +284,7 @@ int AI(int diff)
 	cout << endl;
 
 	if(count == tot)
-  		cout <<"    You Have Sanked Enemy Fleet!\n    The Victory is Yours!\n" << endl << endl;
+  	cout <<"    You Have Sanked Enemy Fleet!\n    The Victory is Yours!\n" << endl << endl;
 	else
 		cout << "    Your Fleet is Defeated  \n    You lost." << endl << endl;
 
