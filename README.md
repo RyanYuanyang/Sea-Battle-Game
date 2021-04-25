@@ -66,6 +66,8 @@ When game ends, an ranking list would be generated, which records the number of 
 
 3. Vector is used in function printRecord() , so dynamic memory management would be used to store the record of challenge mode.
 
-4. A file that ranks the best record of player in mode 2 (challenging mode) would be generated/outputed and then it would also be inputed back into the program each time the players call the record.
+4. The program will output a "record.txt" to store the records of challenge mode, and player can see these records in the game.
 
-5. Codes is in multiple files according to their functions. For example, a file named main.cop is the main body of the program, comp.cpp would be the program of the AI opponent, a file named printboard.cpp would be the program to print the 2D array into a game board, and a header file would also be created to declare different functions being used in the whole program.
+5. A file that ranks the best record of player in mode 2 (challenging mode) would be generated/outputed and then it would also be inputed back into the program each time the players call the record.
+
+6. Codes is in multiple files according to their functions. For example, a file named main.cop is the main body of the program, comp.cpp would be the program of the AI opponent, a file named printboard.cpp would be the program to print the 2D array into a game board, and a header file would also be created to declare different functions being used in the whole program.
