@@ -26,7 +26,7 @@ int main(){
     cin >> opt;
   }
 
-  system("cls");
+  system("clear");
 
 	// the choosing mode menu
 	while (opt != '3'){
