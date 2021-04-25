@@ -8,6 +8,7 @@ using namespace std;
 
 int S[10]; //the number of each type of ship
 //0 == nothing   2 == Submarine  3 == Destoryer  4 == Cruiser  5 == Battleship  6 == Carrier
+
 int rd() // generate a random number
 {
 	int rr;
@@ -16,11 +17,12 @@ int rd() // generate a random number
 	// mod by a big prime to avoid random numbers concenrate on some values
 	return rr;
 }
-
-int CHKi(int a[11][11], int len, int n, int st1, int st2)//check i lines to place ship
+//check whether the i lines could place this ship
+//a[][] stores the board, len means the length of ship, n is 10 (n*n board)
+//len == length of the ship   n -->  Board Size (n*n)
+//(st1,st2) is the starter position to check is there is a place for the ship
+int CHKi(int a[11][11], int len, int n, int st1, int st2)
 {
-	//len == length of the ship    B_size  ==  Board Size
-	//(st1,st2) is the starter position to check is there is a place for the ship
 	int p;
 	for(int i = 0; i<n; ++i)
 		for(int j = 0; j<n; ++j)
@@ -39,7 +41,11 @@ int CHKi(int a[11][11], int len, int n, int st1, int st2)//check i lines to plac
 		}
 	return -1;// not available
 }
-int CHKj(int a[11][11], int len, int n, int st1, int st2)//check j lines to place ship
+//check whether the j lines could place this ship
+//a[][] stores the board, len means the length of ship, n is 10 (n*n board)
+//len == length of the ship   n -->  Board Size (n*n)
+//(st1,st2) is the starter position to check is there is a place for the ship
+int CHKj(int a[11][11], int len, int n, int st1, int st2)
 {
 	int p;
 	for(int i = 0; i<n; ++i)
@@ -58,9 +64,11 @@ int CHKj(int a[11][11], int len, int n, int st1, int st2)//check j lines to plac
 		}
 	return -1;// not available
 }
+// place the ship on the board
+// n*n == Board Size  & len == ship lenth
 int PLACE_SHIP(int a[11][11], int n, int tp)
 {
-	// n*n == Board Size  & len == ship lenth
+
 	int r1,r2,r3,siz,ci,cj,ships_num,len;
 	len = tp%10;
 	r1 = rd();
@@ -71,8 +79,8 @@ int PLACE_SHIP(int a[11][11], int n, int tp)
 	jj = r2 % n;
 	//  ii,jj  is the starter position to check
 	//  r3  is the direction ( r3 = 0 means row  &  r3 = 1 means colum )
-	ci = CHKi(a,len,n,ii,jj);
-	cj = CHKj(a,len,n,ii,jj);
+	ci = CHKi(a,len,n,ii,jj); 
+	cj = CHKj(a,len,n,ii,jj);// to check whether the ship could be placed horizontially or vertically
 
 	if(ci<0 && cj<0) return 0; // no available place
 
@@ -92,7 +100,10 @@ int PLACE_SHIP(int a[11][11], int n, int tp)
 	}
 	return 1; // success
 }
-int GEN(int a[11][11], int n, int S_num[])//ship number
+//this function is used to intiallize the random function and place the ships stored in S_num[] array
+//a[][] stores the board, n is 10 (the board is n*n size)
+//S_num[] stores number of ships
+int GEN(int a[11][11], int n, int S_num[])
 {
 	//n * n == board size
 	srand( (time(NULL)%19260817) );
@@ -105,6 +116,9 @@ int GEN(int a[11][11], int n, int S_num[])//ship number
 	return 0;
 }
 
+//this function is to output the board generated here
+//it is used to check whether the board is generated correctly
+/*
 void PRINT_BOARD(int a[11][11],int n)
 {
 	printf("    ");
@@ -125,17 +139,17 @@ void PRINT_BOARD(int a[11][11],int n)
 		}
 		printf("\n");
 	}
-}
+}*/
 
+//genboard is the body function of this part, it will initialize first
+//and is used to generate the board randomly with specified number of ships
+//B[]  array is used to record the board
+//S[]  array is used to record the number of each type of ship
 void genBoard(int B[][11],int S[])
 {
 	for(int i = 0; i<10; ++i)
 		for(int j = 0; j<10; ++j) B[i][j] = 0;
-
-	//S[]  array is used to record the number of each type of ship
-	//for(int i = 0; i<5; ++i) S[i] = 1;
+	
 	GEN(B,10,S);
-
-//	PRINT_BOARD(B,10);
-
+	//PRINT_BOARD(B,10)
 }
