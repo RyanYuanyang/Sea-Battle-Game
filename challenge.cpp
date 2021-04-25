@@ -119,13 +119,13 @@ char challenge(){
 		cout << "    2. Enter anything else to see your local record" << endl;
 		cin >> opt;
 		if (opt != '1'){
-			system("clear");
+			system("cls");
 			// print the record
 			printRecord();
 		}
 	}
 
-	system("clear");
+	system("cls");
 
 	for(int i = 0; i<5; ++i)
 		ships[i] = 1;
@@ -159,14 +159,14 @@ char challenge(){
 
 	// report the ships left on the board
     cout << "    Enemy fleet:  Submarine(2) = " << ships[0] << " Destoryer(3) = " << ships[1];
-	cout << " Cruiser(4) = " << ships[2] << " Battleship(5) = " << ships[3] << " Carrier(6) = " << ships[4] << endl << endl;
-	cout << "    " << shell << " shells left,   " << count << " hit." << endl << endl;
+		cout << " Cruiser(4) = " << ships[2] << " Battleship(5) = " << ships[3] << " Carrier(6) = " << ships[4] << endl << endl;
+		cout << "    " << shell << " shells left,   " << count << " hit." << endl << endl;
     cout << "    Choose position to attack (x y): ";
     cin >> x >> y;
 
 	// input again when the input is invalid
     while (x > 10 || x < 1 || y > 10 || y < 1 || !cin){
-			system("clear");
+			system("cls");
 			cout << "    Denied, out of range! \n\n\n";
 	    printBoard(board);
 	    cout << endl;
@@ -184,7 +184,7 @@ char challenge(){
     y = y - 1;
 
     cout << endl;
-    system("clear");
+    system("cls");
 		// report missed when the position is empty
     if (board[y][x] == 0){
       cout << "    Missed!" << endl << endl;
@@ -220,30 +220,36 @@ char challenge(){
 
 	cout << "The order you sunk the Enemy ships is:" << endl;
 
-	if(sunk_list.empty()) cout << " Nothing :(" << endl;
+	if(sunk_list.empty())
+		cout << " Nothing :(" << endl;
 
 	while( !sunk_list.empty() )
 	{
 		sink_ship = sunk_list.back();
 		sunk_list.pop_back();
-		if(sink_ship == 2) cout << "Submarine" << endl;
-  		if(sink_ship == 3) cout << "Destoryer" << endl;
-  		if(sink_ship == 4) cout << "Cruiser" << endl;
-  		if(sink_ship == 5) cout << "Battleship" << endl;
-  		if(sink_ship == 6) cout << "Carrier" << endl;
+		if(sink_ship == 2)
+			cout << "Submarine" << endl;
+  	if(sink_ship == 3)
+			cout << "Destoryer" << endl;
+  	if(sink_ship == 4)
+			cout << "Cruiser" << endl;
+  	if(sink_ship == 5)
+			cout << "Battleship" << endl;
+  	if(sink_ship == 6)
+			cout << "Carrier" << endl;
 	}
 	cout << endl << endl;
 
   // options when finish a round
 	cout << "    Choose an option: " << endl;
-	cout << "    1. Play Against the AI\n    2. Play Challenge Mode Again!\n    3. Quit\n    4. Enter Anything Else to See the Local Record";
+	cout << "    1. Play Against the AI\n    2. Play Challenge Mode Again!\n    3. Quit\n    4. Enter Anything Else to See the Local Record" << endl;
 	cin >> opt;
 
 	// when user wants to see the record
 	while (opt != '1' && opt != '2' && opt != '3'){
 		printRecord();
 		cout << "    Choose an option: " << endl;
-		cout << "    1. Play Against the AI\n    2. Play Challenge Mode Again!\n    3. Quit\n    4. Enter Anything Else to See the Local Record";
+		cout << "    1. Play Against the AI\n    2. Play Challenge Mode Again!\n    3. Quit\n    4. Enter Anything Else to See the Local Record" << endl;
 		cin >> opt;
 	}
 
