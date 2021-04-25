@@ -3,7 +3,6 @@
 #include <iostream>
 #include <fstream>
 #include <ctime>
-
 #include "genBoard.h"
 #include "printBoard.h"
 #include "printRecord.h"
@@ -46,11 +45,11 @@ int Count_ships_left(int board[][11], int ships[])
 // the body function of challenge mode
 char challenge(){
 
-  int count = 0;
-  int shell = 50;
-  int board[11][11];
-  int ships[11];
-  int x, y;
+	int count = 0;
+	int shell = 50;
+	int board[11][11];
+	int ships[11];
+	int x, y;
 	int sink_ship;
 	int chk_ships = 0, tot;
 
@@ -139,13 +138,14 @@ char challenge(){
     printBoard(board);
     cout << endl;
 
-		// report the ships left on the board
-    cout << "    Enemy fleet:  Submarine(2) = " << ships[0] << " Destoryer(3) = " << ships[1] << " Cruiser(4) = " << ships[2] << " Battleship(5) = " << ships[3] << " Carrier(6) = " << ships[4] << endl << endl;
+	// report the ships left on the board
+    cout << "    Enemy fleet:  Submarine(2) = " << ships[0] << " Destoryer(3) = " << ships[1];
+	cout << " Cruiser(4) = " << ships[2] << " Battleship(5) = " << ships[3] << " Carrier(6) = " << ships[4] << endl << endl;
 		cout << "    " << shell << " shells left,   " << count << " hit." << endl << endl;
     cout << "    Choose position to attack (x y): ";
     cin >> x >> y;
 
-		// input again when the input is invalid
+	// input again when the input is invalid
     while (x > 10 || x < 1 || y > 10 || y < 1 || !cin){
 			system("cls");
 			cout << "    Denied, out of range! \n\n\n";
