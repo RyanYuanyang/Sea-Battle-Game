@@ -9,6 +9,11 @@
 #include "printBoard.h"
 #include "input_ships_shell.h"
 
+/*
+#ifdef __linux__
+#define system("cls") 
+*/
+
 using namespace std;
 //a[][11] stores the board(and ships) , n is 10(n*n board) , pos is the shooting position
 int SHOOT(int a[][11], int n, int pos) 
