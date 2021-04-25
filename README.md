@@ -71,3 +71,6 @@ When game ends, an ranking list would be generated, which records the number of 
 5. A file that ranks the best record of player in mode 2 (challenging mode) would be generated/outputed and then it would also be inputed back into the program each time the players call the record.
 
 6. Codes is in multiple files according to their functions. For example, a file named main.cop is the main body of the program, comp.cpp would be the program of the AI opponent, a file named printboard.cpp would be the program to print the 2D array into a game board, and a header file would also be created to declare different functions being used in the whole program.
+
+
+**We use academy11 server for testing**
