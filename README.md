@@ -26,7 +26,7 @@ In this mode, player’s opponent is a computer.
 
 There are three levels of computer difficulty. **Easy, Normal, Hard, Impossible.**
 
-Player places his ships on a 10 x 10 board.
+Player places ships on a 10 x 10 board.
 
 Player's fleet has several types of ships. By default, each following type of ship has one. Additionally, setting the numbers of each type of ship within limits is available. (e.g. Each player can set 3 submarines maximum)
 
@@ -42,7 +42,7 @@ Player can attack just once a turn, then pass the turn to the opponent.
 
 Attack effects will be reported after each attack. Both sides get the result of whether a ship has been hit, and the position has been attacked would be shown on the board.
 
-When a player’s whole fleets is sunk, the game ends.
+When player’s or AI's whole fleet is sunk, the game ends.
 
 - **Mode 2: Challenge mode.**
 
@@ -58,13 +58,13 @@ When game ends, an ranking list would be generated, which records the number of 
 
 
 
-**The following features are planed to be implemented:**
+**The following features are implemented:**
 
 1. Random is used to generate the arrangement of player’s fleet (can also be arranged manually) and the enemy’s fleet.
 
-2. 2D arrais that represents the game board with 10 x 10 dimension is widely used to store the game status.
+2. 2D arrais that represents the game board with 10 x 10 dimension is widely used to store the game status. Vector data type is used to store the record of challenge mode.
 
-3. The players are able to set their own size of the game board by inputing its dimension, so dynamic memory management would be used to allocate the array which represents the game board with specific size.
+3. Vector is used in function printRecord() , so dynamic memory management would be used to store the record of challenge mode.
 
 4. A file that ranks the best record of player in mode 2 (challenging mode) would be generated/outputed and then it would also be inputed back into the program each time the players call the record.
 
