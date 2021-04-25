@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <ctime>
+#include <vector>
 #include "genBoard.h"
 #include "printBoard.h"
 #include "printRecord.h"
@@ -41,6 +42,7 @@ int Count_ships_left(int board[][11], int ships[])
 
 	return 0;
 }
+vector <int> sunk_list;
 
 // the body function of challenge mode
 char challenge(){
@@ -148,6 +150,7 @@ char challenge(){
   		if(sink_ship == 4) cout << "Cruiser !" << endl;
   		if(sink_ship == 5) cout << "Battleship !" << endl;
   		if(sink_ship == 6) cout << "Carrier !" << endl;
+  		sunk_list.push_back(sink_ship);
 	  }
 
   	cout << endl;
@@ -215,6 +218,21 @@ char challenge(){
 	else // fail
 		cout << "    Ahhhh! The Enemy Fleet Has Destroyed Our Base, Gameover :(" << endl << endl;
 
+	cout << "The order you sunk the Enemy ships is:" << endl;
+	
+	if(sunk_list.empty()) cout << " Nothing :(" << endl;
+	
+	while( !sunk_list.empty() )
+	{
+		sink_ship = sunk_list.back();
+		sunk_list.pop_back();
+		if(sink_ship == 2) cout << "Submarine" << endl;
+  		if(sink_ship == 3) cout << "Destoryer" << endl;
+  		if(sink_ship == 4) cout << "Cruiser" << endl;
+  		if(sink_ship == 5) cout << "Battleship" << endl;
+  		if(sink_ship == 6) cout << "Carrier" << endl;
+	}
+	cout << endl << endl;
 
   // options when finish a round
 	cout << "    Choose an option: " << endl;
