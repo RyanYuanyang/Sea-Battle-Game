@@ -187,7 +187,7 @@ char challenge(){
     system("clear");
 		// report missed when the position is empty
     if (board[y][x] == 0){
-      cout << "    Missed!" << endl << endl;
+      cout << "    Missed!" << " (" << x + 1 << ' ' << y + 1 << ")" << endl << endl;
       board[y][x] = -1;
     }
 		// input again when the input is invalid
@@ -197,7 +197,7 @@ char challenge(){
     }
 		// report hit when the position has a ship
     else{
-      cout << "    Right on Target!"<< endl << endl;
+      cout << "    Right on Target!" << " (" << x + 1 << ' ' << y + 1 << ")" << endl << endl;
       board[y][x] = 1;
       count++;
     }
