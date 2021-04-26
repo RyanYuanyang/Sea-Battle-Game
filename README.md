@@ -91,6 +91,7 @@ Player can access the record before the challenge mode/ after the challenge mode
 
 
 **Sample input and output is stored in "sample_input_output.cpp" and "sample_input_output.txt"**
+
 Please use C++ compiler or github to view it, to avoid format disorder.
 
 **We use academy11 server for testing**
