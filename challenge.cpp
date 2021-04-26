@@ -247,6 +247,7 @@ char challenge(){
 	// when user wants to see the record
 	while (opt != '1' && opt != '2' && opt != '3'){
     		system("clear");
+		cout << endl;
 		printRecord();
 		cout << endl;
 		cout << "    Choose an option: " << endl;
