@@ -28,10 +28,8 @@ int input_ships_shell(int ships[], int &shell)
 		cin>>num;
 		system("clear");
 	}
-
 	ships[0] = num;
 	num = -1;
-
 	while(num < 0 || num > 5)
 	{
 		print_current_ships(ships);
@@ -39,10 +37,8 @@ int input_ships_shell(int ships[], int &shell)
 		cin>>num;
 		system("clear");
 	}
-
 	ships[1] = num;
 	num = -1;
-
 	while(num < 0 || num > 3)
 	{
 		print_current_ships(ships);
@@ -50,10 +46,8 @@ int input_ships_shell(int ships[], int &shell)
 		cin>>num;
 		system("clear");
 	}
-
 	ships[2] = num;
 	num = -1;
-
 	while(num < 0 || num > 3)
 	{
 		print_current_ships(ships);
@@ -61,10 +55,8 @@ int input_ships_shell(int ships[], int &shell)
 		cin>>num;
 		system("clear");
 	}
-
 	ships[3] = num;
 	num = -1;
-
 	while(num < 0 || num > 3)
 	{
 		print_current_ships(ships);
@@ -72,14 +64,11 @@ int input_ships_shell(int ships[], int &shell)
 		cin>>num;
 		system("clear");
 	}
-
 	ships[4] = num;
 	num = -1;
-
 	int chk = 0, tot = 0;
 	for(int i = 0; i<5; ++i) //count the total grid of ships
 		tot+= ships[i] * (i+2);
-
 	while(!chk)
 	{
 		print_current_ships(ships);
@@ -92,7 +81,6 @@ int input_ships_shell(int ships[], int &shell)
 			cout<<"    Too many shells!"<< endl << endl;
 		else chk = 1;
 	}
-
 	shell = num;
 	return tot;
 }
@@ -109,10 +97,8 @@ int input_ships(int ships[])
 		cin>>num;
 		system("clear");
 	}
-
 	ships[0] = num;
 	num = -1;
-
 	while(num < 0 || num > 5)
 	{
 		print_current_ships(ships);
@@ -120,10 +106,8 @@ int input_ships(int ships[])
 		cin>>num;
 		system("clear");
 	}
-
 	ships[1] = num;
 	num = -1;
-
 	while(num < 0 || num > 3)
 	{
 		print_current_ships(ships);
@@ -131,10 +115,8 @@ int input_ships(int ships[])
 		cin>>num;
 		system("clear");
 	}
-
 	ships[2] = num;
 	num = -1;
-
 	while(num < 0 || num > 3)
 	{
 		print_current_ships(ships);
@@ -142,10 +124,8 @@ int input_ships(int ships[])
 		cin>>num;
 		system("clear");
 	}
-
 	ships[3] = num;
 	num = -1;
-
 	while(num < 0 || num > 3)
 	{
 		print_current_ships(ships);
@@ -153,14 +133,10 @@ int input_ships(int ships[])
 		cin>>num;
 		system("clear");
 	}
-
 	ships[4] = num;
 	num = -1;
-
 	int chk = 0, tot = 0;
 	for(int i = 0; i<5; ++i) //count the total grid of ships
 		tot+= ships[i] * (i+2);
-
-
 	return tot;
 }
