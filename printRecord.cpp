@@ -32,16 +32,18 @@ void printRecord(){
   // the record is sorted by the number of shells player used in each round
   // the lowest the best
   sort(record.begin(), record.end());
-  cout << "Ranking (shells consumed)" << "    " << "Date" << endl;
+  cout << endl;
+  cout << endl;
+  cout << "   Ranking (shells consumed)" << "    " << "Date" << endl;
   vector<string>::iterator itr;
 
   for (itr = record.begin(); itr != record.begin() + 10; itr++){
     count++;
     if (count == 10){
-      cout << count << "." << *itr << endl;
+      cout << "   " << count << "." << *itr << endl;
     }
     else
-      cout << count << ". " << *itr << endl;
+      cout << "   " << count << ". " << *itr << endl;
   }
 
 }
