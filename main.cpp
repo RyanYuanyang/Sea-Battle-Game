@@ -38,25 +38,35 @@ int main(){
     cin >> opt;
   }
 
-  system("clear");
 
 	// the choosing mode menu
 
 	while (opt != '3'){
+
+		system ("clear");
+
+		cout << "\n\n    ____________________   _____    __________    ______________________________________.____        ________    _____      _____  ___________\n";
+		cout << "   /   _____/\\_   _____/  /  _  \\   \\______   \\  /  _  \\__    ___/\\__    ___/\\_   _____/|    |      /  _____/   /  _  \\    /     \\ \\_   _____/\n";
+		cout << "   \\_____  \\  |    __)_  /  /_\\  \\   |    |  _/ /  /_\\  \\|    |     |    |    |    __)_ |    |     /   \\  ___  /  /_\\  \\  /  \\ /  \\ |    __)_ \n";
+		cout << "   /        \\ |        \\/    |    \\  |    |   \\/    |    \\    |     |    |    |        \\|    |___  \\    \\_\\  \\/    |    \\/    Y    \\|        \\\n";
+		cout << "  /_______  //_______  /\\____|__  /  |______  /\\____|__  /____|     |____|   /_______  /|_______ \\  \\______  /\\____|__  /\\____|__  /_______  /\n";
+		cout << "          \\/         \\/         \\/          \\/         \\/                            \\/         \\/         \\/         \\/         \\/        \\/\n\n\n\n";
 		cout << endl;
 		cout << endl;
 		cout << endl;
-		cout << "  Choosing Mode:\n" << endl;
-		cout << "    1: Fight Against AI" << endl;
-		cout << "    2: Challenge Mode" << endl;
-		cout << "    3: Quit" << endl;
+		cout << endl;
+
+		cout << "  							Choosing Mode:\n" << endl;
+		cout << "    							1: Fight Against AI" << endl;
+		cout << "    							2: Challenge Mode" << endl;
+		cout << "    							3: Quit" << endl;
 		cin >> opt;
 		system("clear");
 
 		// calling the 2 mode
-		while (opt == '2')
+		if (opt == '2')
 		{
-			opt = challenge();
+			challenge();
 			system("clear");
 		}
 
