@@ -243,7 +243,7 @@ int AI(int diff)
 	  system("clear");
 	  chk_denied = 0;
 	  if (b2[y][x] == 0){
-		  cout << "    Missed!" << endl << endl;
+		  cout << "    Missed!" << " (" << x + 1 << ' ' << y + 1 << ")" << endl << endl;
 		  b2[y][x] = -1;
 	   }
 	  else if (b2[y][x] == 1 || b2[y][x] == -1){
@@ -251,7 +251,7 @@ int AI(int diff)
 		  chk_denied = 1;
 	  }
 	  else{
-		  cout << "    Right on Target!"<< endl << endl;
+		  cout << "    Right on Target!"<< " (" << x + 1 << ' ' << y + 1 << ")" << endl << endl;
 		  b2[y][x] = 1;
 		  count++;
 	  }
