@@ -8,6 +8,8 @@ _Tu Yuanyang 3035832476_
 
 **Quick Start**
 
+**Notice: players are recommanded to maximize the window when playing for the right display**
+
 After downloading all the files into a repo in linux, go to the repo that stores all the files in shell, type in the command $ make, and then $ ./Seabattle.
 The program will then start.
 ```
