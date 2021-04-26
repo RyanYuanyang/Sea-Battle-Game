@@ -66,8 +66,10 @@ int main(){
 		// calling the 2 mode
 		if (opt == '2')
 		{
-			challenge();
+			opt = challenge();
+
 			system("clear");
+
 		}
 
 		// calling the 1 mode
@@ -100,7 +102,7 @@ int main(){
 				cin >> dif;
 				system("clear");
 			}
-			opt = AI(dif);
+			AI(dif);
 			system("clear");
 
 		}
