@@ -48,7 +48,7 @@ vector <int> sunk_list;
 char challenge(){
 
 	int count = 0;
-	int shell = 60;
+	int shell = 50;
 	int board[11][11];
 	int ships[11];
 	int x, y;
@@ -119,13 +119,13 @@ char challenge(){
 		cout << "    2. Enter anything else to see your local record" << endl;
 		cin >> opt;
 		if (opt != '1'){
-			system("clear");
+			system("cls");
 			// print the record
 			printRecord();
 		}
 	}
 
-	system("clear");
+	system("cls");
 
 	for(int i = 0; i<5; ++i)
 		ships[i] = 1;
@@ -159,14 +159,14 @@ char challenge(){
 
 	// report the ships left on the board
     cout << "    Enemy fleet:  Submarine(2) = " << ships[0] << " Destoryer(3) = " << ships[1];
-		cout << " Cruiser(4) = " << ships[2] << " Battleship(5) = " << ships[3] << " Carrier(6) = " << ships[4] << endl << endl;
-		cout << "    " << shell << " shells left,   " << count << " hit." << endl << endl;
+	cout << " Cruiser(4) = " << ships[2] << " Battleship(5) = " << ships[3] << " Carrier(6) = " << ships[4] << endl << endl;
+	cout << "    " << shell << " shells left,   " << count << " hit." << endl << endl;
     cout << "    Choose position to attack (x y): ";
     cin >> x >> y;
 
 	// input again when the input is invalid
     while (x > 10 || x < 1 || y > 10 || y < 1 || !cin){
-			system("clear");
+			system("cls");
 			cout << "    Denied, out of range! \n\n\n";
 	    printBoard(board);
 	    cout << endl;
@@ -184,10 +184,10 @@ char challenge(){
     y = y - 1;
 
     cout << endl;
-    system("clear");
+    system("cls");
 		// report missed when the position is empty
     if (board[y][x] == 0){
-      cout << "    Missed!" << " (" << x + 1 << ' ' << y + 1 << ")" << endl << endl;
+      cout << "    Missed!" << endl << endl;
       board[y][x] = -1;
     }
 		// input again when the input is invalid
@@ -197,7 +197,7 @@ char challenge(){
     }
 		// report hit when the position has a ship
     else{
-      cout << "    Right on Target!" << " (" << x + 1 << ' ' << y + 1 << ")" << endl << endl;
+      cout << "    Right on Target!"<< endl << endl;
       board[y][x] = 1;
       count++;
     }
@@ -217,42 +217,38 @@ char challenge(){
 	}
 	else // fail
 		cout << "    Ahhhh! The Enemy Fleet Has Destroyed Our Base, Gameover :(" << endl << endl;
-
-	cout << "	The order you sunk the Enemy ships is:" << endl;
-
-	if(sunk_list.empty())
-		cout << "	Nothing :(" << endl;
-
-	while( !sunk_list.empty() )
+	
+	sink_ship = Count_ships_left(board,ships);
+  	if(sink_ship)
+  		sunk_list.push_back(sink_ship);
+	
+	
+	cout << "The order you sunk the Enemy ships is:" << endl;
+	
+	if(sunk_list.empty()) cout << " Nothing :(" << endl;
+	int siz = sunk_list.size();
+	for(int i = 0; i<siz; ++i)
 	{
-		sink_ship = sunk_list.back();
-		sunk_list.pop_back();
-		if(sink_ship == 2)
-			cout << "	Submarine" << endl;
-  	if(sink_ship == 3)
-			cout << "	Destoryer" << endl;
-  	if(sink_ship == 4)
-			cout << "	Cruiser" << endl;
-  	if(sink_ship == 5)
-			cout << "	Battleship" << endl;
-  	if(sink_ship == 6)
-			cout << "	Carrier" << endl;
+		sink_ship = sunk_list[i];
+		if(sink_ship == 2) cout << "Submarine" << endl;
+  		if(sink_ship == 3) cout << "Destoryer" << endl;
+  		if(sink_ship == 4) cout << "Cruiser" << endl;
+  		if(sink_ship == 5) cout << "Battleship" << endl;
+  		if(sink_ship == 6) cout << "Carrier" << endl;
 	}
+	while(sunk_list.empty() ) sunk_list.pop_back();
 	cout << endl << endl;
 
   // options when finish a round
-	cout << "	Choosing option: " << endl;
-	cout << "	1. Access your local record" << endl;
-	cout << "	2. Back to the menu" << endl;
-	cout << "	3. Quit" << endl;
+	cout << "    Choose an option: " << endl;
+	cout << "    1. Play Against the AI\n    2. Play Challenge Mode Again!\n    3. Quit\n    4. Enter Anything Else to See the Local Record\n";
 	cin >> opt;
 
 	// when user wants to see the record
-	if (opt == '1'){
-		system("clear");
+	while (opt != '1' && opt != '2' && opt != '3'){
 		printRecord();
-		cout << endl;
-		cout << "    Enter anything else to go back to the menu " << endl;
+		cout << "    Choose an option: " << endl;
+		cout << "    1. Play Against the AI\n    2. Play Challenge Mode Again!\n    3. Quit\n    4. Enter Anything Else to See the Local Record\n";
 		cin >> opt;
 	}
 
