@@ -10,6 +10,8 @@ _Tu Yuanyang 3035832476_
 
 After downloading all the files into a repo in linux, go to the repo that stores all the files in shell, type in the command $ make, and then $ ./Seabattle.
 The program will then start.
+  $ make
+  $ ./Seabattle
 
 
 **Introduction**
@@ -81,7 +83,7 @@ Player can access the record before the challenge mode/ after the challenge mode
 
 4. A file named "record.txt" that ranks the best record of player in challenging mode (with the date when each play round is conducted) would be generated/output and then it would also be input back into the program each time the players call the record.
 
-6. Codes is in multiple files according to their functions. For example, a file named main.cpp is the main body of the program, AI.cpp would be the program of the AI opponent, a file named printBoard.cpp would be the program to print the 2D array into a game board, and multiple header files would be created to declare different functions being used in the whole program.
+5. Codes are in multiple files according to their functions. For example, a file named main.cpp is the main body of the program, AI.cpp would be the program of the AI opponent, a file named printBoard.cpp would be the program to print the 2D array into a game board, and multiple header files would be created to declare different functions being used in the whole program.
 
 
 **We use academy11 server for testing**
