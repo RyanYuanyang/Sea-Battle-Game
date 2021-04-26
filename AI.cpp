@@ -324,14 +324,14 @@ int AI(int diff)
 
 	// options when finish a round
 	cout << "    Choose an option: " << endl;
-	cout << "    1. Play Against the AI\n    2. Play Challenge Mode Again!\n    3. Quit\n    4. Enter Anything Else to See the Local Record\n";
+	cout << "    1. Go Back to menu\n    2. Enter Anything Else to See the Local Record (Challenge Mode)\n    3. Quit\n";
 	cin >> opt;
 
 	// when user wants to see the record
-	while (opt != '1' && opt != '2' && opt != '3'){
+	while (opt != '1' && opt != '3'){
 		printRecord();
 		cout << "    Choose an option: " << endl;
-		cout << "    1. Play Against the AI\n    2. Play Challenge Mode Again!\n    3. Quit\n    4. Enter Anything Else to See the Local Record\n";
+		cout << "    1. Go Back to menu\n    2. Enter Anything Else to See the Local Record (Challenge Mode)\n    3. Quit\n";
 		cin >> opt;
 	}
 
