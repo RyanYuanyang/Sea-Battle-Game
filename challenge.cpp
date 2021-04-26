@@ -130,7 +130,7 @@ char challenge(){
 	for(int i = 0; i<5; ++i)
 		ships[i] = 1;
 
-	shell = 1;
+	shell = 60;
 	tot = 20;
 	cout << "Destroy The Enemy Fleet and Protect Our Base! " << endl;
 
