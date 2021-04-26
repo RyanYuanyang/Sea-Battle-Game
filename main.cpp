@@ -102,7 +102,7 @@ int main(){
 				cin >> dif;
 				system("clear");
 			}
-			AI(dif);
+			opt = AI(dif);
 			system("clear");
 
 		}
