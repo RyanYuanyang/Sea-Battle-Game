@@ -33,7 +33,6 @@ void printRecord(){
   // the lowest the best
   sort(record.begin(), record.end());
   cout << endl;
-  cout << endl;
   cout << "   Ranking (shells consumed)" << "    " << "Date" << endl;
   vector<string>::iterator itr;
 
