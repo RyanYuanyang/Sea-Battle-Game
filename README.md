@@ -14,10 +14,6 @@ After downloading all the files into a repo in linux, go to the repo that stores
 The program will then start.
 ```
 $ make
-.
-.
-.
-.
 (omitting the compilation command...)
 $ ./Seabattle
 ```
