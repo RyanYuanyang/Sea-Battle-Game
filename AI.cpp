@@ -8,33 +8,50 @@
 #include "genBoard.h"
 #include "printBoard.h"
 #include "input_ships_shell.h"
+#include "printRecord.h"
 
 using namespace std;
-//a[][11] stores the board(and ships) , n is 10(n*n board) , pos is the shooting position
-int SHOOT(int a[][11], int n, int pos)
-{
 
+//This structure is used to store the result of AI's shot.
+struct AI_result{
+	int pos; // shot position
+	int st;  // position_status
+};
+
+//a[][11] stores the board(and ships) , n is 10(n*n board) , pos is the shooting position
+AI_result SHOOT(int a[][11], int n, int pos)
+{
+	AI_result result_current;
 	int i,j;	//(i,j) is the postion
-	if(pos > n*n) return 0;
+	
+	result_current.pos = pos;
+	result_current.st = 0;
+	
+	if(pos > n*n) return result_current;
 	i = pos/n;
 	j = pos%n;
 	if(a[i][j] >= 2)
 	{
 		a[i][j] = 1; // shoot the ship
-		return 1;
+		result_current.pos = i*10 + j;
+		result_current.st = 1;
+		return result_current;
 	}
 	else if(a[i][j] == 0)
 	{
 		a[i][j] = -1; //shoot nothing
-		return -1;
+		result_current.pos = i*10 + j;
+		result_current.st = -1;
+		return result_current;
 	}
-	return -2; //the position has been shot
+	result_current.st = -2;
+	return result_current; //the position has been shot
 }
 //IMPOSSIBLE mode AI will shoot with unfailing accuracy
 //a[][11] stores the board(and ships) , n is 10(n*n board)
-int IMPOSSIBLE(int a[][11], int n)
+AI_result IMPOSSIBLE(int a[][11], int n)
 {
-
+	AI_result result_current;
 	int ri,rj,s,cnt;
 	ri = rand();
 	ri = ri % (n);
@@ -45,15 +62,19 @@ int IMPOSSIBLE(int a[][11], int n)
 			if(a[ (i+ri)%n ][ (j+rj)%n ] >= 2) // there is a ship
 			{
 				a[ (i+ri)%n ][ (j+rj)%n ] = 1; // shoot the ship
-				return 1;
+				result_current.pos = i*10 + j;
+				result_current.st = 1;
+				return result_current;
 			}
-	return 0; // your fleet has been destroyed
+	result_current.pos = 0;	
+	result_current.st = 0;
+	return result_current; // your fleet has been destroyed
 }
 //EASY mode AI will shoot randomly :D
 //a[][11] stores the board(and ships) , n is 10(n*n board)
-int EASY(int a[][11], int n)
+AI_result EASY(int a[][11], int n)
 {
-
+	AI_result result_current;
 	int rr,s,cnt;
 	rr = rand();
 	rr = rr*rr%19260817;
@@ -61,38 +82,46 @@ int EASY(int a[][11], int n)
 	cnt = 0;
 	while(1)
 	{
-		s = SHOOT(a, n, rr);
-		if( s == 1 || s == -1 ) return s;
+		result_current = SHOOT(a, n, rr);
+		if( result_current.st == 1 || result_current.st == -1 ) return result_current;
 		//1 == shoot the ship
 		//-1 == shoot nothing
 		//else, the position has been shot
 		rr = (rr+1) % n;
 		cnt++;
-		if(cnt == n) return 0;
+		if(cnt == n)
+		{
+			result_current.pos = 0;
+			result_current.st = 0;
+			return result_current; //no places to shoot
+		}
 	}
-	return 0; //return 0 means there are some errors
+	result_current.pos = 0;
+	result_current.st = 0;
+	return result_current; //return 0,0 means there are some errors
 }
 //NORMAL mode AI will shoot with relatively low accuracy
 //a[][11] stores the board(and ships) , n is 10(n*n board)
-int NORMAL(int a[][11], int n)
+AI_result NORMAL(int a[][11], int n)
 {
-
+	AI_result result_current;
 	int rr,s,cnt;
 	rr = rand();
 	rr%= 100;
-	if(rr < 20) IMPOSSIBLE(a,n);
-	else EASY(a,n);
-
+	if(rr < 20) result_current = IMPOSSIBLE(a,n);
+	else result_current = EASY(a,n);
+	return result_current;
 }
 //HARD mode AI will shoot with relatively high accuracy
 //a[][11] stores the board(and ships) , n is 10(n*n board)
-int HARD(int a[][11], int n)
+AI_result HARD(int a[][11], int n)
 {
-
+	AI_result result_current;
 	int rr,s,cnt;
 	rr = rand();
-	if(rr & 1) IMPOSSIBLE(a,n);
-	else EASY(a,n);
+	if(rr & 1) result_current = IMPOSSIBLE(a,n);
+	else result_current = EASY(a,n);
+	return result_current;
 }
 bool ships_left_AI[6][7];
 int ships_current_AI[6]; //this array is used to store the ships that not been sunk currently
@@ -144,8 +173,11 @@ int AI(int diff)
 	int b2[11][11];  //AI's board
 	int ships[11]; //player's ships
 	int s2[11];  //AI's ships
-	int x, y, chk_AI;
-
+	int chk_ships = 0; //check whether a ship is sunk last turn
+	int tot, tot2, x, y; //tot, tot2 represents the total grids of player's and AI's ships respectively
+	AI_result chk_AI; //to store position and the position's status that AI shot last turn
+	chk_AI.st = 0;
+	chk_AI.pos = 0;
 	//initialize the board
 	for (int i = 0; i < 10; i++)
 		for (int j = 0; j < 10; j++)
@@ -168,7 +200,7 @@ int AI(int diff)
 		cin >> opt;
 		system("clear");
 	}
-	int chk_ships = 0, tot, tot2;
+
 
 	if(opt == '1')
 	{
@@ -208,33 +240,34 @@ int AI(int diff)
 	  	cout << "\n    You sank an enemy ";
 	  	if(sink_ship == 2) cout << "Submarine !" << endl;
 	  	if(sink_ship == 3) cout << "Destoryer !" << endl;
-	 		if(sink_ship == 4) cout << "Cruiser !" << endl;
-	 		if(sink_ship == 5) cout << "Battleship !" << endl;
+	 	if(sink_ship == 4) cout << "Cruiser !" << endl;
+	 	if(sink_ship == 5) cout << "Battleship !" << endl;
   		if(sink_ship == 6) cout << "Carrier !" << endl;
-		}
-	  cout << endl;
-	  printBoard2(board,b2);
-	  cout << endl;
-	  cout << "    Your  fleet:  Submarine(2) = " << ships[0] << " Destoryer(3) = " << ships[1];
-		cout << " Cruiser(4) = " << ships[2] << " Battleship(5) = " << ships[3] << " Carrier(6) = " << ships[4] << endl << endl << endl;
+	  }
+	cout << endl;
+	printBoard2(board,b2);
+	cout << endl;
+	cout << "    Your  fleet:  Submarine(2) = " << ships[0] << " Destoryer(3) = " << ships[1];
+	cout << " Cruiser(4) = " << ships[2] << " Battleship(5) = " << ships[3] << " Carrier(6) = " << ships[4] << endl << endl << endl;
 
-		cout << "    Enemy fleet:  Submarine(2) = " << s2[0] << " Destoryer(3) = " << s2[1];
-		cout << " Cruiser(4) = " << s2[2] << " Battleship(5) = " << s2[3] << " Carrier(6) = " << s2[4] << endl << endl << endl;
+	cout << "    Enemy fleet:  Submarine(2) = " << s2[0] << " Destoryer(3) = " << s2[1];
+	cout << " Cruiser(4) = " << s2[2] << " Battleship(5) = " << s2[3] << " Carrier(6) = " << s2[4] << endl << endl << endl;
 
-	  cout << "    Choose position to attack (x y): ";
-	  cin >> x >> y;
+	cout << "    Choose position to attack (x y): ";
+	cin >> x >> y;
 
-	  while (x > 10 || x < 1 || y > 10 || y < 1 || !cin){
-		  system("clear");
-		  cout << "    Denied, Not an Available Position.\n\n\n";
-		  printBoard2(board,b2);
-		  cout << endl;
-		  cout << "    Enemy fleet:  Submarine(2) = " << ships[0] << " Destoryer(3) = " << ships[1] << " Cruiser(4) = " << ships[2] << " Battleship(5) = " << ships[3] << " Carrier(6) = " << ships[4] << endl << endl;
-	          cout << "    Choose position to attack: x y" << endl;
-		  cin.clear();
-		  cin.ignore(100, '\n');
-		  cin >> x >> y;
-	   }
+	while (x > 10 || x < 1 || y > 10 || y < 1 || !cin)
+	{
+		system("clear");
+		cout << "    Denied, Not an Available Position.\n\n\n";
+		printBoard2(board,b2);
+		cout << endl;
+		cout << "    Enemy fleet:  Submarine(2) = " << ships[0] << " Destoryer(3) = " << ships[1] << " Cruiser(4) = " << ships[2] << " Battleship(5) = " << ships[3] << " Carrier(6) = " << ships[4] << endl << endl;
+		cout << "    Choose position to attack: x y" << endl;
+		cin.clear();
+		cin.ignore(100, '\n');
+		cin >> x >> y;
+	}
 
 	  x = x - 1;
 	  y = y - 1;
@@ -243,7 +276,7 @@ int AI(int diff)
 	  system("clear");
 	  chk_denied = 0;
 	  if (b2[y][x] == 0){
-		  cout << "    Missed!" << " (" << x + 1 << ' ' << y + 1 << ")" << endl << endl;
+		  cout << "    Missed!" << " ( " << x + 1 << " , " << y + 1 << " )" << endl << endl;
 		  b2[y][x] = -1;
 	   }
 	  else if (b2[y][x] == 1 || b2[y][x] == -1){
@@ -251,7 +284,7 @@ int AI(int diff)
 		  chk_denied = 1;
 	  }
 	  else{
-		  cout << "    Right on Target!"<< " (" << x + 1 << ' ' << y + 1 << ")" << endl << endl;
+		  cout << "    Right on Target!"<< " ( " << x + 1 << " , " << y + 1 << " )" << endl << endl;
 		  b2[y][x] = 1;
 		  count++;
 	  }
@@ -270,22 +303,37 @@ int AI(int diff)
 
 	  	// chk_AI = 1 --> AI shoot on your ships
 	  	// chk_AI = -1 --> AI shoot nothing
-	  if(chk_AI == 1)
-	  {
-		  count2++;
-		  cout << "    Your ship has been shot!" << endl;
-	  }
-	  else
-		  cout << "    Enemy missed!" << endl;
-
+		if(chk_AI.st == 1)
+		{
+			count2++;
+			cout << "    Your ship has been shot!" << " ( " << chk_AI.pos/10 + 1 << " , " << chk_AI.pos%10 + 1 << " )" << endl;
+		}
+		else
+			cout << "    Enemy missed!" << " ( " << chk_AI.pos/10 + 1 << " , " << chk_AI.pos%10 + 1 << " )" << endl;
 	}
 	cout << endl;
 	printBoard2(board,b2); // print the final status of board
 	cout << endl;
 
 	if(count == tot)
-  	cout <<"    You Have Sanked Enemy Fleet!\n    The Victory is Yours!\n" << endl << endl;
+  		cout <<"    You Have Sanked Enemy Fleet!\n    The Victory is Yours!\n" << endl << endl;
 	else
 		cout << "    Your Fleet is Defeated  \n    You lost." << endl << endl;
+	
+	cout << endl << endl;
 
+	// options when finish a round
+	cout << "    Choose an option: " << endl;
+	cout << "    1. Play Against the AI\n    2. Play Challenge Mode Again!\n    3. Quit\n    4. Enter Anything Else to See the Local Record\n";
+	cin >> opt;
+
+	// when user wants to see the record
+	while (opt != '1' && opt != '2' && opt != '3'){
+		printRecord();
+		cout << "    Choose an option: " << endl;
+		cout << "    1. Play Against the AI\n    2. Play Challenge Mode Again!\n    3. Quit\n    4. Enter Anything Else to See the Local Record\n";
+		cin >> opt;
+	}
+
+	return opt;
 }
