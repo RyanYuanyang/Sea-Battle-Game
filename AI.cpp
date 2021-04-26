@@ -8,7 +8,6 @@
 #include "genBoard.h"
 #include "printBoard.h"
 #include "input_ships_shell.h"
-#include "printRecord.h"
 
 using namespace std;
 
@@ -324,16 +323,16 @@ int AI(int diff)
 
 	// options when finish a round
 	cout << "    Choose an option: " << endl;
-	cout << "    1. Go Back to menu\n    2. Enter Anything Else to See the Local Record (Challenge Mode)\n    3. Quit\n";
+	cout << "    1. Go Back to menu\n    2. Quit\n";
 	cin >> opt;
 
 	// when user wants to see the record
-	while (opt != '1' && opt != '3'){
-		printRecord();
+	while (opt != '1' && opt != '2'){
+		system("clear");
 		cout << "    Choose an option: " << endl;
-		cout << "    1. Go Back to menu\n    2. Enter Anything Else to See the Local Record (Challenge Mode)\n    3. Quit\n";
+		cout << "    1. Go Back to menu\n    2. Quit\n";
 		cin >> opt;
 	}
-
+	if (opt == '2') opt = '3';
 	return opt;
 }
