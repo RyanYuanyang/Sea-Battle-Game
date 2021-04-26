@@ -64,7 +64,7 @@ int main(){
 		system("clear");
 
 		// calling the 2 mode
-		if (opt == '2')
+		while (opt == '2')
 		{
 			opt = challenge();
 
