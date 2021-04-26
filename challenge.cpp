@@ -223,18 +223,18 @@ char challenge(){
   		sunk_list.push_back(sink_ship);
 	
 	
-	cout << "The order you sunk the Enemy ships is:" << endl;
+	cout << "	The order you sunk the Enemy ships is:" << endl;
 	
-	if(sunk_list.empty()) cout << " Nothing :(" << endl;
+	if(sunk_list.empty()) cout << "	Nothing :(" << endl;
 	int siz = sunk_list.size();
 	for(int i = 0; i<siz; ++i)
 	{
 		sink_ship = sunk_list[i];
-		if(sink_ship == 2) cout << "Submarine" << endl;
-  		if(sink_ship == 3) cout << "Destoryer" << endl;
-  		if(sink_ship == 4) cout << "Cruiser" << endl;
-  		if(sink_ship == 5) cout << "Battleship" << endl;
-  		if(sink_ship == 6) cout << "Carrier" << endl;
+		if(sink_ship == 2) cout << "	Submarine" << endl;
+  		if(sink_ship == 3) cout << "	Destoryer" << endl;
+  		if(sink_ship == 4) cout << "	Cruiser" << endl;
+  		if(sink_ship == 5) cout << "	Battleship" << endl;
+  		if(sink_ship == 6) cout << "	Carrier" << endl;
 	}
 	while(sunk_list.empty() ) sunk_list.pop_back();
 	cout << endl << endl;
