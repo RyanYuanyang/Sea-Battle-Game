@@ -73,7 +73,7 @@ int main(){
 		}
 
 		// calling the 1 mode
-		if (opt == '1'){
+		while (opt == '1'){
 			char dif = 0;
 
 			// calling the instruction
