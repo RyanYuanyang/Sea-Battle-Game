@@ -76,7 +76,7 @@ AI_result EASY(int a[][11], int n)
 	AI_result result_current;
 	int rr,s,cnt;
 	rr = rand();
-	rr = rr*rr%19260817;
+	rr = rr%19260817;
 	rr = rr % (n*n);
 	cnt = 0;
 	while(1)
@@ -197,7 +197,7 @@ int AI(int diff)
 		cout <<"    1.Default ( 1 for each type of ship )"<< endl;
 		cout <<"    2.Customize"<<endl;
 		cin >> opt;
-		system("clear");
+		system("cls");
 	}
 
 
@@ -257,7 +257,7 @@ int AI(int diff)
 
 	while (x > 10 || x < 1 || y > 10 || y < 1 || !cin)
 	{
-		system("clear");
+		system("cls");
 		cout << "    Denied, Not an Available Position.\n\n\n";
 		printBoard2(board,b2);
 		cout << endl;
@@ -272,7 +272,7 @@ int AI(int diff)
 	  y = y - 1;
 
 	  cout << endl;
-	  system("clear");
+	  system("cls");
 	  chk_denied = 0;
 	  if (b2[y][x] == 0){
 		  cout << "    Missed!" << " ( " << x + 1 << " , " << y + 1 << " )" << endl << endl;
@@ -328,7 +328,7 @@ int AI(int diff)
 
 	// when user wants to see the record
 	while (opt != '1' && opt != '2'){
-		system("clear");
+		system("cls");
 		cout << "    Choose an option: " << endl;
 		cout << "    1. Go Back to menu\n    2. Quit\n";
 		cin >> opt;
