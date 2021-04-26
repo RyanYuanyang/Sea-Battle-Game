@@ -48,7 +48,7 @@ vector <int> sunk_list;
 char challenge(){
 
 	int count = 0;
-	int shell = 50;
+	int shell = 60;
 	int board[11][11];
 	int ships[11];
 	int x, y;
