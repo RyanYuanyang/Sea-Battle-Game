@@ -90,4 +90,6 @@ Player can access the record before the challenge mode/ after the challenge mode
 5. Codes are in multiple files according to their functions. For example, a file named main.cpp is the main body of the program, AI.cpp would be the program of the AI opponent, a file named printBoard.cpp would be the program to print the 2D array into a game board, and multiple header files would be created to declare different functions being used in the whole program.
 
 
+**Sample input and output is stored in sample_input_output.cpp"
+
 **We use academy11 server for testing**
