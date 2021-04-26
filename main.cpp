@@ -31,14 +31,14 @@ int main(){
     cin >> opt;
   }
 
-  system("cls");
+  system("clear");
 
   if (opt == '2'){
     instruction();
     cin >> opt;
   }
 
-  system("cls");
+  system("clear");
 
 	// the choosing mode menu
 
@@ -51,13 +51,13 @@ int main(){
 		cout << "    2: Challenge Mode" << endl;
 		cout << "    3: Quit" << endl;
 		cin >> opt;
-		system("cls");
+		system("clear");
 
 		// calling the 2 mode
 		while (opt == '2')
 		{
 			opt = challenge();
-			system("cls");
+			system("clear");
 		}
 
 		// calling the 1 mode
@@ -88,7 +88,7 @@ int main(){
 				cout << "    3: HARD" << endl;
 				cout << "    4: IMPOSSIBLE" << endl;
 				cin >> dif;
-				system("cls");
+				system("clear");
 			}
 			AI(dif);
 
