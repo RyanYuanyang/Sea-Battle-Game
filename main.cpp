@@ -15,14 +15,15 @@ int main(){
 	cout << "   /        \\ |        \\/    |    \\  |    |   \\/    |    \\    |     |    |    |        \\|    |___  \\    \\_\\  \\/    |    \\/    Y    \\|        \\\n";
 	cout << "  /_______  //_______  /\\____|__  /  |______  /\\____|__  /____|     |____|   /_______  /|_______ \\  \\______  /\\____|__  /\\____|__  /_______  /\n";
 	cout << "          \\/         \\/         \\/          \\/         \\/                            \\/         \\/         \\/         \\/         \\/        \\/\n\n\n\n";
-	
-	
+
+
+
 	char opt;
 	cout << endl;
 	cout << endl;
 	cout << endl;
-  cout << "  Welcome to the Seabattle game (Author: Tu Yuanyang & He Jiachuan)\n" << endl;
-  cout << "    1: Play!\n    2: Instruction" << endl;
+  cout << "  					Welcome to the Seabattle game (Author: Tu Yuanyang & He Jiachuan)\n" << endl;
+  cout << "    							1: Play!\n    							2: Instruction" << endl;
   cin >> opt;
 
   while (opt != '1' && opt != '2'){
@@ -30,14 +31,14 @@ int main(){
     cin >> opt;
   }
 
-  system("clear");
+  system("cls");
 
   if (opt == '2'){
     instruction();
     cin >> opt;
   }
 
-  system("clear");
+  system("cls");
 
 	// the choosing mode menu
 
@@ -50,13 +51,13 @@ int main(){
 		cout << "    2: Challenge Mode" << endl;
 		cout << "    3: Quit" << endl;
 		cin >> opt;
-		system("clear");
+		system("cls");
 
 		// calling the 2 mode
 		while (opt == '2')
 		{
 			opt = challenge();
-			system("clear");
+			system("cls");
 		}
 
 		// calling the 1 mode
@@ -87,7 +88,7 @@ int main(){
 				cout << "    3: HARD" << endl;
 				cout << "    4: IMPOSSIBLE" << endl;
 				cin >> dif;
-				system("clear");
+				system("cls");
 			}
 			AI(dif);
 
