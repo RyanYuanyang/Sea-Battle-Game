@@ -241,10 +241,10 @@ char challenge(){
 	cout << endl << endl;
 
   // options when finish a round
-	cout << "		Choosing option: " << endl;
-	cout << "		1. Access your local record" << endl;
-	cout << "		2. Back to the menu" << endl;
-	cout << "		3. Quit" << endl;
+	cout << "	Choosing option: " << endl;
+	cout << "	1. Access your local record" << endl;
+	cout << "	2. Back to the menu" << endl;
+	cout << "	3. Quit" << endl;
 	cin >> opt;
 
 	// when user wants to see the record
