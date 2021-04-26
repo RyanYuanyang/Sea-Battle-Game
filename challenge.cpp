@@ -130,7 +130,7 @@ char challenge(){
 	for(int i = 0; i<5; ++i)
 		ships[i] = 1;
 
-	shell = 60;
+	shell = 1;
 	tot = 20;
 	cout << "Destroy The Enemy Fleet and Protect Our Base! " << endl;
 
@@ -218,38 +218,41 @@ char challenge(){
 	else // fail
 		cout << "    Ahhhh! The Enemy Fleet Has Destroyed Our Base, Gameover :(" << endl << endl;
 
-	cout << "The order you sunk the Enemy ships is:" << endl;
+	cout << "	The order you sunk the Enemy ships is:" << endl;
 
 	if(sunk_list.empty())
-		cout << " Nothing :(" << endl;
+		cout << "	Nothing :(" << endl;
 
 	while( !sunk_list.empty() )
 	{
 		sink_ship = sunk_list.back();
 		sunk_list.pop_back();
 		if(sink_ship == 2)
-			cout << "Submarine" << endl;
+			cout << "	Submarine" << endl;
   	if(sink_ship == 3)
-			cout << "Destoryer" << endl;
+			cout << "	Destoryer" << endl;
   	if(sink_ship == 4)
-			cout << "Cruiser" << endl;
+			cout << "	Cruiser" << endl;
   	if(sink_ship == 5)
-			cout << "Battleship" << endl;
+			cout << "	Battleship" << endl;
   	if(sink_ship == 6)
-			cout << "Carrier" << endl;
+			cout << "	Carrier" << endl;
 	}
 	cout << endl << endl;
 
   // options when finish a round
-	cout << "    Choose an option: " << endl;
-	cout << "    1. Play Against the AI\n    2. Play Challenge Mode Again!\n    3. Quit\n    4. Enter Anything Else to See the Local Record" << endl;
+	cout << "		Choosing option: " << endl;
+	cout << "		1. Access your local record" << endl;
+	cout << "		2. Back to the menu" << endl;
+	cout << "		3. Quit" << endl;
 	cin >> opt;
 
 	// when user wants to see the record
-	while (opt != '1' && opt != '2' && opt != '3'){
+	if (opt == '1'){
+		system("clear");
 		printRecord();
-		cout << "    Choose an option: " << endl;
-		cout << "    1. Play Against the AI\n    2. Play Challenge Mode Again!\n    3. Quit\n    4. Enter Anything Else to See the Local Record" << endl;
+		cout << endl;
+		cout << "    Enter anything else to go back to the menu " << endl;
 		cin >> opt;
 	}
 
