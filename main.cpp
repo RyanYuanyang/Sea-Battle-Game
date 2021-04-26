@@ -74,7 +74,7 @@ int main(){
 
 		// calling the 1 mode
 		if (opt == '1'){
-			int dif = 0;
+			char dif = 0;
 
 			// calling the instruction
 			cout << endl;
@@ -92,7 +92,7 @@ int main(){
 			cout << "  Your win goal is to defeat the enemy fleet, otherwise you lose.\n" << endl;
 
 			// choosing the difficulty
-			while(!dif || dif > 4 || dif <1)
+			while(dif > '4' || dif <'1')
 			{
 				cout << "  Choosing Difficulty:\n" << endl;
 				cout << "    1: EASY" << endl;
@@ -100,9 +100,9 @@ int main(){
 				cout << "    3: HARD" << endl;
 				cout << "    4: IMPOSSIBLE" << endl;
 				cin >> dif;
-				system("clear");
+				system("cls");
 			}
-			opt = AI(dif);
+			opt = AI(dif-'1'+1);
 			system("clear");
 
 		}
