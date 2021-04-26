@@ -61,7 +61,7 @@ AI_result IMPOSSIBLE(int a[][11], int n)
 			if(a[ (i+ri)%n ][ (j+rj)%n ] >= 2) // there is a ship
 			{
 				a[ (i+ri)%n ][ (j+rj)%n ] = 1; // shoot the ship
-				result_current.pos = i*10 + j;
+				result_current.pos = ((i+ri)%n)*10 + (j+rj)%n;
 				result_current.st = 1;
 				return result_current;
 			}
