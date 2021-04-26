@@ -12,7 +12,7 @@ After downloading all the files into a repo in linux, go to the repo that stores
 The program will then start.
 ```
 $ make
-$./Seabattle
+$ ./Seabattle
 ```
 
 **Introduction**
